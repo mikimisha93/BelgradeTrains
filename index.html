@@ -151,8 +151,8 @@
     </nav>
 
     <script>
-    // Primarni proxy koji zahteva klik na "corsdemo" link iznad
-    const PROXY = "https://cors-anywhere.herokuapp.com/";
+    // Using the most stable proxy for Serbian RS domains
+    const PROXY = "https://corsproxy.io/?";
 
     function handleNav(dest) {
         document.querySelectorAll('.page').forEach(p => { 
@@ -167,47 +167,59 @@
         } else {
             document.getElementById(dest + '-page').classList.add('active-up');
             document.getElementById('landing-page').classList.add('fade-out');
-            document.getElementById('nav-' + dest).classList.add('active');
+            if(document.getElementById('nav-' + dest)) {
+                document.getElementById('nav-' + dest).classList.add('active');
+            }
         }
     }
 
     async function fetchSrbijaVoz(id, displayName) {
         const body = document.getElementById('pids-body');
-        body.innerHTML = '<div style="padding:20px; text-align:center; color:var(--accent-yellow);">UČITAVANJE...</div>';
+        body.innerHTML = '<div style="padding:20px; text-align:center; color:var(--accent-yellow); font-family:monospace;">POVEZIVANJE...</div>';
 
-        // Čišćenje imena stanice za API
-        let officialName = displayName.includes('(') 
-            ? displayName.split('(')[1].replace(')', '').trim().toUpperCase() 
-            : displayName.trim().toUpperCase();
+        // 1. Extract the Latin name from brackets: "Батајница (Batajnica)" -> "BATAJNICA"
+        let officialName = "";
+        if (displayName.includes('(')) {
+            officialName = displayName.split('(')[1].split(')')[0].trim().toUpperCase();
+        } else {
+            officialName = displayName.trim().toUpperCase();
+        }
         
-        if (officialName === "PROKOP") officialName = "BEOGRAD CENTAR";
+        // 2. Manual fix for the Center station
+        if (officialName === "PROKOP" || officialName === "БЕОГРАД ЦЕНТАР") {
+            officialName = "BEOGRAD CENTAR";
+        }
 
+        // 3. Precise Date Formatting
         const now = new Date();
-        const dateStr = `${String(now.getDate()).padStart(2, '0')}.${String(now.getMonth() + 1).padStart(2, '0')}.${now.getFullYear()}`;
+        const d = String(now.getDate()).padStart(2, '0');
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const y = now.getFullYear();
+        const dateStr = `${d}.${m}.${y}`;
         
-        // Finalni URL ka Srbija Vozu
+        // 4. Construct the target URL
         const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${encodeURIComponent(officialName)}/${id}/${dateStr}/0000/polazak/999/sr`;
         
         try {
-            const response = await fetch(PROXY + target, {
-                headers: { 'X-Requested-With': 'XMLHttpRequest' }
-            });
+            // We use a direct fetch with the corsproxy.io prefix
+            const response = await fetch(PROXY + encodeURIComponent(target));
+            
+            if (!response.ok) throw new Error("Proxy error");
 
-            if (!response.ok) throw new Error();
-
-            const htmlContent = await response.text();
-            const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, 'text/html');
             const rows = doc.querySelectorAll('tr.tsmall');
             
             body.innerHTML = "";
-            if(rows.length === 0) {
-                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema polazaka.</div>';
+            
+            if (!rows || rows.length === 0) {
+                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Trenutno nema polazaka.</div>';
                 return;
             }
 
             rows.forEach(row => {
                 const cells = row.querySelectorAll('td');
-                if(cells.length >= 3) {
+                if (cells.length >= 3) {
                     body.innerHTML += `
                         <div class="pids-row">
                             <span class="pids-voz">${cells[0].innerText.trim()}</span>
@@ -216,11 +228,12 @@
                         </div>`;
                 }
             });
-        } catch(e) {
+        } catch (e) {
+            console.error(e);
             body.innerHTML = `
                 <div style="padding:20px; text-align:center;">
-                    <p style="color:#ff4b4b;">Greška u konekciji</p>
-                    <p style="font-size:0.7rem; opacity:0.6; margin-top:10px;">Kliknite na <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank" style="color:white;">ovaj link</a> i dozvolite pristup, pa probajte ponovo.</p>
+                    <div style="color:#ff4b4b; margin-bottom:10px;">Greška u komunikaciji sa serverom</div>
+                    <button onclick="location.reload()" style="background:white; color:black; border:none; padding:8px 15px; border-radius:10px; font-size:0.8rem; font-weight:bold;">OSVEŽI</button>
                 </div>`;
         }
     }
