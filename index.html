@@ -174,34 +174,6 @@
         function openMonitor() { handleNav('monitor'); }
         function openPlan() { handleNav('plan'); }
 
-        async function fetchSrbijaVoz(id, name) {
-            const body = document.getElementById('pids-body');
-            body.innerHTML = '<div style="padding:20px; text-align:center; color:orange;">Učitavanje...</div>';
-            
-            const date = new Date().toLocaleDateString('de-DE'); // Formats as DD.MM.YYYY
-            const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${name.toUpperCase()}/${id}/${date}/0000/polazak/999/sr`;
-            
-            try {
-                const response = await fetch(CORS_PROXY + encodeURIComponent(target));
-                const data = await response.json();
-                const doc = new DOMParser().parseFromString(data.contents, 'text/html');
-                const rows = doc.querySelectorAll('tr.tsmall');
-                
-                body.innerHTML = "";
-                if(rows.length === 0) { body.innerHTML = '<div style="padding:20px; text-align:center;">Nema polazaka.</div>'; return; }
-
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
-                    if(cells.length >= 3) {
-                        body.innerHTML += `
-                            <div class="pids-row">
-                                <span class="pids-voz">${cells[0].innerText}</span>
-                                <span class="pids-smer">${cells[2].innerText}</span>
-                                <span class="pids-vreme">${cells[1].innerText}</span>
-                            </div>`;
-                    }
-                });
-            } catch(e) { body.innerHTML = '<div style="padding:20px; color:red;">Greška u konekciji.</div>'; }
         }
 
         async function fetchPlan(id, name) {
