@@ -151,56 +151,117 @@
     </nav>
 
     <script>
-        const CORS_PROXY = "https://api.allorigins.win/get?url=";
+    const CORS_PROXY = "https://api.allorigins.win/get?url=";
 
-        function handleNav(dest) {
-            document.querySelectorAll('.page').forEach(p => { p.classList.remove('active-up'); p.classList.remove('fade-out'); });
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    // Navigation Logic
+    function handleNav(dest) {
+        document.querySelectorAll('.page').forEach(p => { 
+            p.classList.remove('active-up'); 
+            p.classList.remove('fade-out'); 
+        });
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        
+        if(dest === 'home') {
+            document.getElementById('landing-page').classList.add('active-up');
+            document.getElementById('nav-home').classList.add('active');
+        } else if(dest === 'monitor') {
+            document.getElementById('monitor-page').classList.add('active-up');
+            document.getElementById('landing-page').classList.add('fade-out');
+            document.getElementById('nav-monitor').classList.add('active');
+        } else if(dest === 'plan') {
+            document.getElementById('plan-page').classList.add('active-up');
+            document.getElementById('landing-page').classList.add('fade-out');
+            document.getElementById('nav-plan').classList.add('active');
+        }
+    }
+
+    function openMonitor() { handleNav('monitor'); }
+    function openPlan() { handleNav('plan'); }
+
+    // Station Monitor Data Fetcher
+    async function fetchSrbijaVoz(id, displayName) {
+        const body = document.getElementById('pids-body');
+        body.innerHTML = '<div style="padding:20px; text-align:center; color:var(--accent-yellow);">POVEZIVANJE...</div>';
+
+        // Extract official name (handles cases like "Zemun (Zemun)")
+        let officialName = displayName.includes('(') 
+            ? displayName.split('(')[1].replace(')', '').trim().toUpperCase() 
+            : displayName.trim().toUpperCase();
+        
+        // Manual fix for Prokop
+        if (officialName === "PROKOP") officialName = "BEOGRAD CENTAR";
+
+        const date = new Date().toLocaleDateString('de-DE'); // DD.MM.YYYY
+        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${encodeURIComponent(officialName)}/${id}/${date}/0000/polazak/999/sr`;
+        
+        try {
+            const response = await fetch(CORS_PROXY + encodeURIComponent(target));
+            const data = await response.json();
+            const doc = new DOMParser().parseFromString(data.contents, 'text/html');
+            const rows = doc.querySelectorAll('tr.tsmall');
             
-            if(dest === 'home') {
-                document.getElementById('landing-page').classList.add('active-up');
-                document.getElementById('nav-home').classList.add('active');
-            } else if(dest === 'monitor') {
-                document.getElementById('monitor-page').classList.add('active-up');
-                document.getElementById('landing-page').classList.add('fade-out');
-                document.getElementById('nav-monitor').classList.add('active');
-            } else if(dest === 'plan') {
-                document.getElementById('plan-page').classList.add('active-up');
-                document.getElementById('landing-page').classList.add('fade-out');
-                document.getElementById('nav-plan').classList.add('active');
+            body.innerHTML = "";
+            if(!rows || rows.length === 0) {
+                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema planiranih polazaka.</div>';
+                return;
             }
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if(cells.length >= 3) {
+                    body.innerHTML += `
+                        <div class="pids-row">
+                            <span class="pids-voz">${cells[0].innerText.trim()}</span>
+                            <span class="pids-smer">${cells[2].innerText.trim()}</span>
+                            <span class="pids-vreme">${cells[1].innerText.trim()}</span>
+                        </div>`;
+                }
+            });
+        } catch(e) {
+            body.innerHTML = '<div style="padding:20px; text-align:center; color:#ff4b4b;">Greška u konekciji.</div>';
         }
+    }
 
-        function openMonitor() { handleNav('monitor'); }
-        function openPlan() { handleNav('plan'); }
+    // Plan Page Data Fetcher
+    async function fetchPlan(id, displayName) {
+        const container = document.getElementById('plan-results');
+        container.innerHTML = '<div style="text-align:center; padding:20px; color:var(--accent-yellow);">Tražim rute...</div>';
+        
+        let officialName = displayName.includes('(') 
+            ? displayName.split('(')[1].replace(')', '').trim().toUpperCase() 
+            : displayName.trim().toUpperCase();
+        if (officialName === "PROKOP") officialName = "BEOGRAD CENTAR";
 
-        }
+        const date = new Date().toLocaleDateString('de-DE');
+        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${encodeURIComponent(officialName)}/${id}/${date}/0000/polazak/999/sr`;
 
-        async function fetchPlan(id, name) {
-            const container = document.getElementById('plan-results');
-            container.innerHTML = '<div style="text-align:center; padding:20px;">Tražim rute...</div>';
-            
-            const date = new Date().toLocaleDateString('de-DE');
-            const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${name.toUpperCase()}/${id}/${date}/0000/polazak/999/sr`;
+        try {
+            const res = await fetch(CORS_PROXY + encodeURIComponent(target));
+            const data = await res.json();
+            const doc = new DOMParser().parseFromString(data.contents, 'text/html');
+            const rows = doc.querySelectorAll('tr.tsmall');
 
-            try {
-                const res = await fetch(CORS_PROXY + encodeURIComponent(target));
-                const data = await res.json();
-                const doc = new DOMParser().parseFromString(data.contents, 'text/html');
-                const rows = doc.querySelectorAll('tr.tsmall');
+            container.innerHTML = "";
+            if(!rows || rows.length === 0) {
+                container.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema pronađenih ruta.</div>';
+                return;
+            }
 
-                container.innerHTML = "";
-                rows.forEach(row => {
-                    const c = row.querySelectorAll('td');
+            rows.forEach(row => {
+                const c = row.querySelectorAll('td');
+                if(c.length >= 3) {
                     container.innerHTML += `
                         <div class="result-card">
-                            <div class="res-time">${c[1].innerText}</div>
-                            <div class="res-dest">${c[2].innerText}</div>
-                            <div style="opacity:0.5; font-size:0.8rem;">Voz: ${c[0].innerText}</div>
+                            <div class="res-time">${c[1].innerText.trim()}</div>
+                            <div class="res-dest">${c[2].innerText.trim()}</div>
+                            <div style="opacity:0.5; font-size:0.8rem; font-family:var(--font-mono);">VOZ: ${c[0].innerText.trim()}</div>
                         </div>`;
-                });
-            } catch(e) { container.innerHTML = "Greška."; }
+                }
+            });
+        } catch(e) { 
+            container.innerHTML = '<div style="padding:20px; text-align:center; color:#ff4b4b;">Greška pri učitavanju podataka.</div>'; 
         }
-    </script>
+    }
+</script>
 </body>
 </html>
