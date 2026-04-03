@@ -151,12 +151,8 @@
     </nav>
 
     <script>
-    // Using a more reliable proxy for 2026
-    const PROXIES = [
-        "https://api.allorigins.win/get?url=",
-        "https://corsproxy.io/?",
-        "https://thingproxy.freeboard.io/fetch/"
-    ];
+    // Primarni proxy koji zahteva klik na "corsdemo" link iznad
+    const PROXY = "https://cors-anywhere.herokuapp.com/";
 
     function handleNav(dest) {
         document.querySelectorAll('.page').forEach(p => { 
@@ -168,57 +164,44 @@
         if(dest === 'home') {
             document.getElementById('landing-page').classList.add('active-up');
             document.getElementById('nav-home').classList.add('active');
-        } else if(dest === 'monitor') {
-            document.getElementById('monitor-page').classList.add('active-up');
+        } else {
+            document.getElementById(dest + '-page').classList.add('active-up');
             document.getElementById('landing-page').classList.add('fade-out');
-            document.getElementById('nav-monitor').classList.add('active');
-        } else if(dest === 'plan') {
-            document.getElementById('plan-page').classList.add('active-up');
-            document.getElementById('landing-page').classList.add('fade-out');
-            document.getElementById('nav-plan').classList.add('active');
+            document.getElementById('nav-' + dest).classList.add('active');
         }
-    }
-
-    async function fetchWithRetry(targetUrl) {
-        for (let proxy of PROXIES) {
-            try {
-                const response = await fetch(proxy + encodeURIComponent(targetUrl));
-                if (!response.ok) continue;
-                const data = await response.json();
-                return data.contents || data; // Handle different proxy response formats
-            } catch (e) {
-                console.warn("Proxy failed, trying next...");
-            }
-        }
-        throw new Error("All proxies failed");
     }
 
     async function fetchSrbijaVoz(id, displayName) {
         const body = document.getElementById('pids-body');
-        body.innerHTML = '<div style="padding:20px; text-align:center; color:var(--accent-yellow);">POVEZIVANJE...</div>';
+        body.innerHTML = '<div style="padding:20px; text-align:center; color:var(--accent-yellow);">UČITAVANJE...</div>';
 
-        // Fix station name for the official URL
+        // Čišćenje imena stanice za API
         let officialName = displayName.includes('(') 
             ? displayName.split('(')[1].replace(')', '').trim().toUpperCase() 
             : displayName.trim().toUpperCase();
         
-        // Special case for Prokop
         if (officialName === "PROKOP") officialName = "BEOGRAD CENTAR";
 
-        // Date format must be DD.MM.YYYY
         const now = new Date();
         const dateStr = `${String(now.getDate()).padStart(2, '0')}.${String(now.getMonth() + 1).padStart(2, '0')}.${now.getFullYear()}`;
         
-        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${officialName}/${id}/${dateStr}/0000/polazak/999/sr`;
+        // Finalni URL ka Srbija Vozu
+        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${encodeURIComponent(officialName)}/${id}/${dateStr}/0000/polazak/999/sr`;
         
         try {
-            const htmlContent = await fetchWithRetry(target);
+            const response = await fetch(PROXY + target, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            });
+
+            if (!response.ok) throw new Error();
+
+            const htmlContent = await response.text();
             const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
             const rows = doc.querySelectorAll('tr.tsmall');
             
             body.innerHTML = "";
-            if(!rows || rows.length === 0) {
-                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema polazaka za danas.</div>';
+            if(rows.length === 0) {
+                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema polazaka.</div>';
                 return;
             }
 
@@ -234,11 +217,14 @@
                 }
             });
         } catch(e) {
-            body.innerHTML = '<div style="padding:20px; text-align:center; color:#ff4b4b;">Greška u konekciji.<br><small>Proverite internet ili osvežite stranicu.</small></div>';
+            body.innerHTML = `
+                <div style="padding:20px; text-align:center;">
+                    <p style="color:#ff4b4b;">Greška u konekciji</p>
+                    <p style="font-size:0.7rem; opacity:0.6; margin-top:10px;">Kliknite na <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank" style="color:white;">ovaj link</a> i dozvolite pristup, pa probajte ponovo.</p>
+                </div>`;
         }
     }
 
-    // Connect landing buttons
     function openMonitor() { handleNav('monitor'); }
     function openPlan() { handleNav('plan'); }
 </script>
