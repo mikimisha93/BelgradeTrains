@@ -94,16 +94,32 @@
     <div id="monitor-page" class="page glass">
         <div class="monitor-title-spacer"><h2>Монитор станице</h2></div>
         <div style="width: 100%; padding: 0 25px; margin-bottom: 25px;">
-            <select id="station-picker" class="styled-select" onchange="fetchSrbijaVoz(this.value, this.options[this.selectedIndex].text)">
-                <option value="" disabled selected>Изаберите станицу...</option>
-                <option value="16007">Вуков Споменик</option>
-                <option value="16052">Прокоп (Centar)</option>
-                <option value="16004">Нови Београд</option>
-                <option value="16002">Земун</option>
-                <option value="16204">Батајница</option>
-                <option value="16011">Овча</option>
-                <option value="16013">Ресник</option>
-            </select>
+           <select id="station-picker" class="styled-select" onchange="fetchSrbijaVoz(this.value, this.options[this.selectedIndex].text)">
+    <option value="" disabled selected>Изаберите станицу...</option>
+    <optgroup label="Linija 1 (Batajnica - Ovča)">
+        <option value="16204">Батајница (Batajnica)</option>
+        <option value="01016">Камендин (Kamendin)</option>
+        <option value="16001">Земун Поље (Zemun Polje)</option>
+        <option value="01015">Алтина (Altina)</option>
+        <option value="16002">Земун (Zemun)</option>
+        <option value="16003">Тошин Бунар (Tosin Bunar)</option>
+        <option value="16004">Нови Београд (Novi Beograd)</option>
+        <option value="16052">Београд Центар (Prokop)</option>
+        <option value="16006">Карађорђев Парк (Karadjordjev Park)</option>
+        <option value="16007">Вуков Споменик (Vukov Spomenik)</option>
+        <option value="16008">Панчевачки Мост (Pancevacki Most)</option>
+        <option value="01001">Крњача Мост (Krnjaca Most)</option>
+        <option value="16009">Крњача (Krnjaca)</option>
+        <option value="16010">Себеш (Sebes)</option>
+        <option value="16011">Овча (Ovca)</option>
+    </optgroup>
+    <optgroup label="Linija 2 (Resnik)">
+        <option value="16005">Раковица (Rakovica)</option>
+        <option value="16050">Кнежевац (Knezevac)</option>
+        <option value="16051">Кијево (Kijevo)</option>
+        <option value="16013">Ресник (Resnik)</option>
+    </optgroup>
+</select>
         </div>
         <div id="pids-container" class="pids-display">
             <div class="pids-header"><span>Voz</span><span>Smer</span><span>Vreme</span></div>
