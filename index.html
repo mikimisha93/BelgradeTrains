@@ -151,9 +151,13 @@
     </nav>
 
     <script>
-    const CORS_PROXY = "https://api.allorigins.win/get?url=";
+    // Using a more reliable proxy for 2026
+    const PROXIES = [
+        "https://api.allorigins.win/get?url=",
+        "https://corsproxy.io/?",
+        "https://thingproxy.freeboard.io/fetch/"
+    ];
 
-    // Navigation Logic
     function handleNav(dest) {
         document.querySelectorAll('.page').forEach(p => { 
             p.classList.remove('active-up'); 
@@ -175,34 +179,46 @@
         }
     }
 
-    function openMonitor() { handleNav('monitor'); }
-    function openPlan() { handleNav('plan'); }
+    async function fetchWithRetry(targetUrl) {
+        for (let proxy of PROXIES) {
+            try {
+                const response = await fetch(proxy + encodeURIComponent(targetUrl));
+                if (!response.ok) continue;
+                const data = await response.json();
+                return data.contents || data; // Handle different proxy response formats
+            } catch (e) {
+                console.warn("Proxy failed, trying next...");
+            }
+        }
+        throw new Error("All proxies failed");
+    }
 
-    // Station Monitor Data Fetcher
     async function fetchSrbijaVoz(id, displayName) {
         const body = document.getElementById('pids-body');
         body.innerHTML = '<div style="padding:20px; text-align:center; color:var(--accent-yellow);">POVEZIVANJE...</div>';
 
-        // Extract official name (handles cases like "Zemun (Zemun)")
+        // Fix station name for the official URL
         let officialName = displayName.includes('(') 
             ? displayName.split('(')[1].replace(')', '').trim().toUpperCase() 
             : displayName.trim().toUpperCase();
         
-        // Manual fix for Prokop
+        // Special case for Prokop
         if (officialName === "PROKOP") officialName = "BEOGRAD CENTAR";
 
-        const date = new Date().toLocaleDateString('de-DE'); // DD.MM.YYYY
-        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${encodeURIComponent(officialName)}/${id}/${date}/0000/polazak/999/sr`;
+        // Date format must be DD.MM.YYYY
+        const now = new Date();
+        const dateStr = `${String(now.getDate()).padStart(2, '0')}.${String(now.getMonth() + 1).padStart(2, '0')}.${now.getFullYear()}`;
+        
+        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${officialName}/${id}/${dateStr}/0000/polazak/999/sr`;
         
         try {
-            const response = await fetch(CORS_PROXY + encodeURIComponent(target));
-            const data = await response.json();
-            const doc = new DOMParser().parseFromString(data.contents, 'text/html');
+            const htmlContent = await fetchWithRetry(target);
+            const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
             const rows = doc.querySelectorAll('tr.tsmall');
             
             body.innerHTML = "";
             if(!rows || rows.length === 0) {
-                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema planiranih polazaka.</div>';
+                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema polazaka za danas.</div>';
                 return;
             }
 
@@ -218,50 +234,13 @@
                 }
             });
         } catch(e) {
-            body.innerHTML = '<div style="padding:20px; text-align:center; color:#ff4b4b;">Greška u konekciji.</div>';
+            body.innerHTML = '<div style="padding:20px; text-align:center; color:#ff4b4b;">Greška u konekciji.<br><small>Proverite internet ili osvežite stranicu.</small></div>';
         }
     }
 
-    // Plan Page Data Fetcher
-    async function fetchPlan(id, displayName) {
-        const container = document.getElementById('plan-results');
-        container.innerHTML = '<div style="text-align:center; padding:20px; color:var(--accent-yellow);">Tražim rute...</div>';
-        
-        let officialName = displayName.includes('(') 
-            ? displayName.split('(')[1].replace(')', '').trim().toUpperCase() 
-            : displayName.trim().toUpperCase();
-        if (officialName === "PROKOP") officialName = "BEOGRAD CENTAR";
-
-        const date = new Date().toLocaleDateString('de-DE');
-        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${encodeURIComponent(officialName)}/${id}/${date}/0000/polazak/999/sr`;
-
-        try {
-            const res = await fetch(CORS_PROXY + encodeURIComponent(target));
-            const data = await res.json();
-            const doc = new DOMParser().parseFromString(data.contents, 'text/html');
-            const rows = doc.querySelectorAll('tr.tsmall');
-
-            container.innerHTML = "";
-            if(!rows || rows.length === 0) {
-                container.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Nema pronađenih ruta.</div>';
-                return;
-            }
-
-            rows.forEach(row => {
-                const c = row.querySelectorAll('td');
-                if(c.length >= 3) {
-                    container.innerHTML += `
-                        <div class="result-card">
-                            <div class="res-time">${c[1].innerText.trim()}</div>
-                            <div class="res-dest">${c[2].innerText.trim()}</div>
-                            <div style="opacity:0.5; font-size:0.8rem; font-family:var(--font-mono);">VOZ: ${c[0].innerText.trim()}</div>
-                        </div>`;
-                }
-            });
-        } catch(e) { 
-            container.innerHTML = '<div style="padding:20px; text-align:center; color:#ff4b4b;">Greška pri učitavanju podataka.</div>'; 
-        }
-    }
+    // Connect landing buttons
+    function openMonitor() { handleNav('monitor'); }
+    function openPlan() { handleNav('plan'); }
 </script>
 </body>
 </html>
