@@ -1,1 +1,33 @@
+name: Refresh Train Data
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # This runs every night at 3:00 AM
+  workflow_dispatch:   # This button lets you run it manually for testing
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Tools
+        run: pip install requests beautifulsoup4
+
+      - name: Run Scraper
+        run: python scraper.py
+
+      - name: Save Changes to GitHub
+        run: |
+          git config --global user.name "TrainDataBot"
+          git config --global user.email "bot@github.com"
+          git add trains.json
+          git commit -m "Automated update: $(date)" || exit 0
+          git push
 
