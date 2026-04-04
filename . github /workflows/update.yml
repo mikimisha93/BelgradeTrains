@@ -1,9 +1,11 @@
 name: Refresh Train Data
 
 on:
+  push:                # This triggers it the moment you click 'Save'
+    branches: [ main ]
+  workflow_dispatch:   # This creates the manual button
   schedule:
-    - cron: '0 3 * * *' # This runs every night at 3:00 AM
-  workflow_dispatch:   # This button lets you run it manually for testing
+    - cron: '0 3 * * *'
 
 jobs:
   scrape:
@@ -28,6 +30,6 @@ jobs:
           git config --global user.name "TrainDataBot"
           git config --global user.email "bot@github.com"
           git add trains.json
-          git commit -m "Automated update: $(date)" || exit 0
+          git commit -m "Manual update via Push" || exit 0
           git push
-
+          
