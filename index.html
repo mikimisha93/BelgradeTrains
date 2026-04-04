@@ -30,7 +30,6 @@
 
         .glass { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); }
 
-        /* --- SCREEN MANAGEMENT --- */
         .page {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; align-items: center;
@@ -46,33 +45,33 @@
         .active-up { transform: translateY(0) !important; visibility: visible !important; opacity: 1 !important; }
         .fade-out { opacity: 0; pointer-events: none; }
 
-        /* --- LANDING --- */
         .top-section { margin-top: 8vh; text-align: center; flex-shrink: 0; }
         .modern-train-icon { width: 48px; height: 48px; margin-bottom: 10px; }
         h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase; }
+        
         .center-section { width: 100%; padding: 30px 32px; display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; }
         .btn-large { width: 100%; padding: 22px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; color: white; text-align: center; border-radius: 20px; cursor: pointer; transition: transform 0.1s; border: 1px solid var(--glass-border); background: var(--glass-bg); }
         .btn-large:active { transform: scale(0.96); }
 
-        /* --- TITLES & SELECTS --- */
         .monitor-title-spacer { margin-top: 8vh; width: 100%; text-align: center; padding: 0 25px; margin-bottom: 20px; }
-        .styled-select { width: 100%; padding: 18px; border-radius: 15px; background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: white; font-size: 1rem; outline: none; appearance: none; }
+        .styled-select { width: 100%; padding: 18px; border-radius: 15px; background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: white; font-size: 1rem; outline: none; appearance: none; margin-bottom: 10px; }
 
-        /* --- PIDS MONITOR (AUTHENTIC LOOK) --- */
-        .pids-display { width: calc(100% - 30px); background: #000; border-radius: 8px; border: 2px solid #333; padding: 12px 0; display: flex; flex-direction: column; margin: 0 15px; }
+        .pids-display { width: calc(100% - 30px); background: #000; border-radius: 8px; border: 2px solid #333; padding: 12px 0; display: flex; flex-direction: column; margin: 0 15px; max-height: 50vh; overflow-y: auto; }
         .pids-header { display: grid; grid-template-columns: 70px 1fr 70px; padding: 0 15px 8px 15px; border-bottom: 1px solid #333; font-size: 0.75rem; font-weight: bold; color: #666; text-transform: uppercase; }
         .pids-row { display: grid; grid-template-columns: 70px 1fr 70px; padding: 12px 15px; border-bottom: 1px solid #111; font-family: var(--font-mono); }
-        .pids-voz { color: #FFF; font-size: 0.8rem; }
-        .pids-smer { color: var(--accent-yellow); font-size: 1rem; text-align: center; font-weight: bold; }
+        .pids-voz { color: #888; font-size: 0.8rem; }
+        .pids-smer { color: var(--accent-yellow); font-size: 1rem; font-weight: bold; }
         .pids-vreme { color: var(--accent-yellow); font-size: 1.1rem; text-align: right; font-weight: bold; }
 
-        /* --- PLAN RESULTS --- */
         .results-container { width: calc(100% - 40px); flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .result-card { border-radius: 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; }
-        .res-time { font-size: 1.5rem; font-weight: 800; color: var(--accent-yellow); font-family: var(--font-mono); }
-        .res-dest { font-size: 1.2rem; font-weight: 700; color: #FFF; }
+        .result-card { border-radius: 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 18px; }
+        .res-type { font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 5px; }
+        .res-main { display: flex; justify-content: space-between; align-items: center; }
+        .res-time { font-size: 1.4rem; font-weight: 800; color: var(--accent-yellow); font-family: var(--font-mono); }
+        .res-info { text-align: right; }
+        .res-dest { font-size: 1.1rem; font-weight: 700; color: #FFF; }
+        .transfer-tag { background: #ff4b4b; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; margin-top: 4px; display: inline-block; }
 
-        /* --- NAV BAR --- */
         .nav-bar { position: fixed; bottom: 35px; left: 50%; transform: translateX(-50%); width: calc(100% - 60px); max-width: 360px; height: 70px; display: flex; justify-content: space-around; align-items: center; border-radius: 35px; z-index: 9999; }
         .nav-item svg { width: 26px; height: 26px; fill: white; opacity: 0.4; transition: 0.3s; }
         .nav-item.active svg { opacity: 1; filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
@@ -83,7 +82,7 @@
     <div id="landing-page" class="page">
         <header class="top-section">
             <svg class="modern-train-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="5" y="2" width="14" height="16" rx="3"/><line x1="5" y1="12" x2="19" y2="12"/><circle cx="9" cy="15" r="1" fill="white"/><circle cx="15" cy="15" r="1" fill="white"/></svg>
-            <h1>БГ:воз</h1>
+            <h1>БГ:воз Live</h1>
         </header>
         <main class="center-section">
             <div class="btn-large" onclick="openMonitor()">СТАНИЧНИ МОНИТОР</div>
@@ -94,52 +93,54 @@
     <div id="monitor-page" class="page glass">
         <div class="monitor-title-spacer"><h2>Монитор станице</h2></div>
         <div style="width: 100%; padding: 0 25px; margin-bottom: 25px;">
-           <select id="station-picker" class="styled-select" onchange="fetchSrbijaVoz(this.value, this.options[this.selectedIndex].text)">
-    <option value="" disabled selected>Изаберите станицу...</option>
-    <optgroup label="Linija 1 (Batajnica - Ovča)">
-        <option value="16204">Батајница (Batajnica)</option>
-        <option value="01016">Камендин (Kamendin)</option>
-        <option value="16001">Земун Поље (Zemun Polje)</option>
-        <option value="01015">Алтина (Altina)</option>
-        <option value="16002">Земун (Zemun)</option>
-        <option value="16003">Тошин Бунар (Tosin Bunar)</option>
-        <option value="16004">Нови Београд (Novi Beograd)</option>
-        <option value="16052">Београд Центар (Prokop)</option>
-        <option value="16006">Карађорђев Парк (Karadjordjev Park)</option>
-        <option value="16007">Вуков Споменик (Vukov Spomenik)</option>
-        <option value="16008">Панчевачки Мост (Pancevacki Most)</option>
-        <option value="01001">Крњача Мост (Krnjaca Most)</option>
-        <option value="16009">Крњача (Krnjaca)</option>
-        <option value="16010">Себеш (Sebes)</option>
-        <option value="16011">Овча (Ovca)</option>
-    </optgroup>
-    <optgroup label="Linija 2 (Resnik)">
-        <option value="16005">Раковица (Rakovica)</option>
-        <option value="16050">Кнежевац (Knezevac)</option>
-        <option value="16051">Кијево (Kijevo)</option>
-        <option value="16013">Ресник (Resnik)</option>
-    </optgroup>
-</select>
+           <select id="station-picker" class="styled-select" onchange="updateMonitor(this.value)">
+                <option value="" disabled selected>Изаберите станицу...</option>
+                <option value="Батајница">Батајница</option>
+                <option value="Камендин">Камендин</option>
+                <option value="Земун поље">Земун поље</option>
+                <option value="Алтина">Алтина</option>
+                <option value="Земун">Земун</option>
+                <option value="Тошин бунар">Тошин бунар</option>
+                <option value="Нови Београд">Нови Београд</option>
+                <option value="Београд Центар">Београд Центар</option>
+                <option value="Карађођев парк">Карађођев парк</option>
+                <option value="Вуков споменик">Вуков споменик</option>
+                <option value="Панчевачки мост">Панчевачки мост</option>
+                <option value="Овча">Овча</option>
+                <option value="Раковица">Раковица</option>
+                <option value="Ресник">Ресник</option>
+                <option value="Лазаревац">Лазаревац</option>
+            </select>
         </div>
         <div id="pids-container" class="pids-display">
             <div class="pids-header"><span>Voz</span><span>Smer</span><span>Vreme</span></div>
-            <div id="pids-body">
-                <div style="padding:20px; text-align:center; color:#444;">Изаберите стаnicu за приказ полазака</div>
-            </div>
+            <div id="pids-body"></div>
         </div>
     </div>
 
     <div id="plan-page" class="page glass">
         <div class="monitor-title-spacer"><h2>Планирај пут</h2></div>
-        <div style="width: 100%; padding: 0 25px; margin-bottom: 25px;">
-            <p style="text-align: center; opacity: 0.6; font-size: 0.9rem;">Приказ свих полазака са станице:</p>
-            <select id="plan-station-picker" class="styled-select" onchange="fetchPlan(this.value, this.options[this.selectedIndex].text)">
+        <div style="width: 100%; padding: 0 25px; margin-bottom: 20px;">
+            <select id="plan-from" class="styled-select">
                 <option value="" disabled selected>Полазак из...</option>
-                <option value="16007">Вуков Споменик</option>
-                <option value="16052">Прокоп</option>
-                <option value="16002">Земун</option>
-                <option value="16204">Батајница</option>
+                <option value="Батајница">Батајница</option>
+                <option value="Камендин">Камендин</option>
+                <option value="Земун">Земун</option>
+                <option value="Београд Центар">Београд Центар</option>
+                <option value="Вуков споменик">Вуков споменик</option>
+                <option value="Ресник">Ресник</option>
+                <option value="Лазаревац">Лазаревац</option>
             </select>
+            <select id="plan-to" class="styled-select">
+                <option value="" disabled selected>До...</option>
+                <option value="Београд Центар">Београд Центар</option>
+                <option value="Вуков споменик">Вуков споменик</option>
+                <option value="Панчевачки мост">Панчевачки мост</option>
+                <option value="Овча">Овча</option>
+                <option value="Ресник">Ресник</option>
+                <option value="Батајница">Батајница</option>
+            </select>
+            <div class="btn-large" style="padding: 12px; margin-top: 5px; background: var(--accent-yellow); color: black;" onclick="findRoute()">ПРЕТРАЖИ</div>
         </div>
         <div id="plan-results" class="results-container"></div>
     </div>
@@ -151,95 +152,154 @@
     </nav>
 
     <script>
-    // Using the most stable proxy for Serbian RS domains
-    const PROXY = "https://corsproxy.io/?";
+    let trainData = [];
+
+    // Load the JSON created by your Python Scraper
+    async function loadData() {
+        try {
+            const resp = await fetch('trains.json?v=' + new Date().getTime());
+            trainData = await resp.json();
+            console.log("Data loaded:", trainData.length, "trains");
+        } catch (e) {
+            console.error("Failed to load trains.json", e);
+        }
+    }
 
     function handleNav(dest) {
         document.querySelectorAll('.page').forEach(p => { 
-            p.classList.remove('active-up'); 
-            p.classList.remove('fade-out'); 
+            p.classList.remove('active-up'); p.classList.remove('fade-out'); 
         });
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        
         if(dest === 'home') {
             document.getElementById('landing-page').classList.add('active-up');
             document.getElementById('nav-home').classList.add('active');
         } else {
             document.getElementById(dest + '-page').classList.add('active-up');
             document.getElementById('landing-page').classList.add('fade-out');
-            if(document.getElementById('nav-' + dest)) {
-                document.getElementById('nav-' + dest).classList.add('active');
-            }
+            document.getElementById('nav-' + dest).classList.add('active');
         }
     }
 
-    async function fetchSrbijaVoz(id, displayName) {
+    function updateMonitor(station) {
         const body = document.getElementById('pids-body');
-        body.innerHTML = '<div style="padding:20px; text-align:center; color:var(--accent-yellow); font-family:monospace;">POVEZIVANJE...</div>';
-
-        // 1. Extract the Latin name from brackets: "Батајница (Batajnica)" -> "BATAJNICA"
-        let officialName = "";
-        if (displayName.includes('(')) {
-            officialName = displayName.split('(')[1].split(')')[0].trim().toUpperCase();
-        } else {
-            officialName = displayName.trim().toUpperCase();
-        }
-        
-        // 2. Manual fix for the Center station
-        if (officialName === "PROKOP" || officialName === "БЕОГРАД ЦЕНТАР") {
-            officialName = "BEOGRAD CENTAR";
-        }
-
-        // 3. Precise Date Formatting
         const now = new Date();
-        const d = String(now.getDate()).padStart(2, '0');
-        const m = String(now.getMonth() + 1).padStart(2, '0');
-        const y = now.getFullYear();
-        const dateStr = `${d}.${m}.${y}`;
-        
-        // 4. Construct the target URL
-        const target = `https://w3.srbvoz.rs/redvoznje//stanicni/${encodeURIComponent(officialName)}/${id}/${dateStr}/0000/polazak/999/sr`;
-        
-        try {
-            // We use a direct fetch with the corsproxy.io prefix
-            const response = await fetch(PROXY + encodeURIComponent(target));
-            
-            if (!response.ok) throw new Error("Proxy error");
+        const currentTime = now.getHours() * 60 + now.getMinutes();
 
-            const html = await response.text();
-            const doc = new DOMParser().parseFromString(html, 'text/html');
-            const rows = doc.querySelectorAll('tr.tsmall');
-            
-            body.innerHTML = "";
-            
-            if (!rows || rows.length === 0) {
-                body.innerHTML = '<div style="padding:20px; text-align:center; opacity:0.5;">Trenutno nema polazaka.</div>';
-                return;
-            }
-
-            rows.forEach(row => {
-                const cells = row.querySelectorAll('td');
-                if (cells.length >= 3) {
-                    body.innerHTML += `
-                        <div class="pids-row">
-                            <span class="pids-voz">${cells[0].innerText.trim()}</span>
-                            <span class="pids-smer">${cells[2].innerText.trim()}</span>
-                            <span class="pids-vreme">${cells[1].innerText.trim()}</span>
-                        </div>`;
+        // Filter trains stopping at this station
+        let departures = [];
+        trainData.forEach(train => {
+            const stop = train.stops.find(s => s.station === station);
+            if (stop) {
+                const [h, m] = stop.departure.split(':').map(Number);
+                const depMins = h * 60 + m;
+                if (depMins >= currentTime - 5) { // Show trains from last 5 mins up to end of day
+                    departures.push({
+                        id: train.train_id,
+                        time: stop.departure,
+                        mins: depMins,
+                        dest: train.stops[train.stops.length - 1].station
+                    });
                 }
+            }
+        });
+
+        departures.sort((a, b) => a.mins - b.mins);
+        body.innerHTML = departures.map(d => `
+            <div class="pids-row">
+                <span class="pids-voz">${d.id}</span>
+                <span class="pids-smer">${d.dest}</span>
+                <span class="pids-vreme">${d.time}</span>
+            </div>
+        `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">Нема више полазака за данас.</div>';
+    }
+
+    function findRoute() {
+        const start = document.getElementById('plan-from').value;
+        const end = document.getElementById('plan-to').value;
+        const container = document.getElementById('plan-results');
+        if(!start || !end) return;
+
+        let results = [];
+
+        // 1. Check for DIRECT trains
+        trainData.forEach(train => {
+            const startIndex = train.stops.findIndex(s => s.station === start);
+            const endIndex = train.stops.findIndex(s => s.station === end);
+            
+            if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
+                results.push({
+                    type: "DIRECT",
+                    train1: train.train_id,
+                    depTime: train.stops[startIndex].departure,
+                    arrTime: train.stops[endIndex].arrival,
+                    depMins: timeToMins(train.stops[startIndex].departure)
+                });
+            }
+        });
+
+        // 2. If no direct trains, or if user wants more options, look for transfers
+        // (Simplified transfer logic for common hubs)
+        const hubs = ["Београд Центар", "Карађођев парк", "Раковица"];
+        if (results.length === 0) {
+            trainData.forEach(t1 => {
+                const sIdx = t1.stops.findIndex(s => s.station === start);
+                if (sIdx === -1) return;
+
+                hubs.forEach(hub => {
+                    const hIdx = t1.stops.findIndex(s => s.station === hub);
+                    if (hIdx === -1 || hIdx <= sIdx) return;
+
+                    const arrAtHub = t1.stops[hIdx].arrival;
+                    
+                    trainData.forEach(t2 => {
+                        const hIdx2 = t2.stops.findIndex(s => s.station === hub);
+                        const eIdx = t2.stops.findIndex(s => s.station === end);
+                        
+                        if (hIdx2 !== -1 && eIdx !== -1 && eIdx > hIdx2 && t1.train_id !== t2.train_id) {
+                            const depFromHub = t2.stops[hIdx2].departure;
+                            const waitTime = timeToMins(depFromHub) - timeToMins(arrAtHub);
+
+                            if (waitTime >= 4 && waitTime < 45) { // Buffer: 4-45 mins
+                                results.push({
+                                    type: "TRANSFER",
+                                    hub: hub,
+                                    train1: t1.train_id,
+                                    train2: t2.train_id,
+                                    depTime: t1.stops[sIdx].departure,
+                                    arrTime: t2.stops[eIdx].arrival,
+                                    depMins: timeToMins(t1.stops[sIdx].departure)
+                                });
+                            }
+                        }
+                    });
+                });
             });
-        } catch (e) {
-            console.error(e);
-            body.innerHTML = `
-                <div style="padding:20px; text-align:center;">
-                    <div style="color:#ff4b4b; margin-bottom:10px;">Greška u komunikaciji sa serverom</div>
-                    <button onclick="location.reload()" style="background:white; color:black; border:none; padding:8px 15px; border-radius:10px; font-size:0.8rem; font-weight:bold;">OSVEŽI</button>
-                </div>`;
         }
+
+        results.sort((a, b) => a.depMins - b.depMins);
+        
+        container.innerHTML = results.map(r => `
+            <div class="result-card">
+                <div class="res-type">${r.type === 'DIRECT' ? 'Директан воз' : 'Преседање: ' + r.hub}</div>
+                <div class="res-main">
+                    <div class="res-time">${r.depTime} ➔ ${r.arrTime}</div>
+                    <div class="res-info">
+                        <div class="res-dest">Воз ${r.train1}${r.type === 'TRANSFER' ? ' / ' + r.train2 : ''}</div>
+                    </div>
+                </div>
+            </div>
+        `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">Нема пронађених рута.</div>';
+    }
+
+    function timeToMins(t) {
+        const [h, m] = t.split(':').map(Number);
+        return h * 60 + m;
     }
 
     function openMonitor() { handleNav('monitor'); }
     function openPlan() { handleNav('plan'); }
+
+    window.onload = loadData;
 </script>
 </body>
 </html>
