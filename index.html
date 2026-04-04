@@ -124,6 +124,29 @@
     </nav>
 
     <script>
+        function handleNav(dest) {
+    // 1. Hide all pages and remove active classes
+    document.querySelectorAll('.page').forEach(p => { 
+        p.classList.remove('active-up'); 
+        p.classList.remove('fade-out'); 
+    });
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    
+    // 2. Show the requested page
+    if(dest === 'home') {
+        document.getElementById('landing-page').classList.add('active-up');
+        document.getElementById('nav-home').classList.add('active');
+    } else {
+        const targetPage = document.getElementById(dest + '-page');
+        if (targetPage) {
+            targetPage.classList.add('active-up');
+            document.getElementById('landing-page').classList.add('fade-out');
+            const navItem = document.getElementById('nav-' + dest);
+            if (navItem) navItem.classList.add('active');
+        }
+    }
+        }
+        
 let trainData = [];
 
 async function loadData() {
