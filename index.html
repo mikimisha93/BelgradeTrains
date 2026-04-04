@@ -124,36 +124,19 @@
     </nav>
 
     <script>
-        function handleNav(dest) {
-    // 1. Hide all pages and remove active classes
-    document.querySelectorAll('.page').forEach(p => { 
-        p.classList.remove('active-up'); 
-        p.classList.remove('fade-out'); 
-    });
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    
-    // 2. Show the requested page
-    if(dest === 'home') {
-        document.getElementById('landing-page').classList.add('active-up');
-        document.getElementById('nav-home').classList.add('active');
-    } else {
-        const targetPage = document.getElementById(dest + '-page');
-        if (targetPage) {
-            targetPage.classList.add('active-up');
-            document.getElementById('landing-page').classList.add('fade-out');
-            const navItem = document.getElementById('nav-' + dest);
-            if (navItem) navItem.classList.add('active');
-        }
-    }
-        }
-        
-let trainData = [];
+        let trainData = [];
+
+// Helper to clean "(dep)" and "(arr)" from Latin strings
+function cleanStationName(name) {
+    if (!name) return "";
+    return name.replace("(dep)", "").replace("(arr)", "").trim();
+}
 
 async function loadData() {
     try {
         const resp = await fetch('trains.json?v=' + new Date().getTime());
         trainData = await resp.json();
-        populateStationLists(); // Automatically fills your dropdowns
+        populateStationLists();
         console.log("Data loaded and lists populated");
     } catch (e) {
         console.error("Failed to load trains.json", e);
@@ -161,18 +144,26 @@ async function loadData() {
 }
 
 function populateStationLists() {
-    // Collect every unique station name from the JSON
     let allStations = new Set();
     trainData.forEach(train => {
-        train.stops.forEach(s => allStations.add(s.station));
+        train.stops.forEach(s => {
+            allStations.add(cleanStationName(s.station));
+        });
     });
 
-    // Sort them alphabetically
     const sortedStations = Array.from(allStations).sort();
-
     const picker = document.getElementById('station-picker');
     const from = document.getElementById('plan-from');
     const to = document.getElementById('plan-to');
+
+    // Reset selects
+    const monitorDefault = '<option value="" disabled selected>Select Station...</option>';
+    const planFromDefault = '<option value="" disabled selected>From...</option>';
+    const planToDefault = '<option value="" disabled selected>To...</option>';
+
+    picker.innerHTML = monitorDefault;
+    from.innerHTML = planFromDefault;
+    to.innerHTML = planToDefault;
 
     sortedStations.forEach(name => {
         const opt = `<option value="${name}">${name}</option>`;
@@ -182,133 +173,88 @@ function populateStationLists() {
     });
 }
 
-function updateMonitor(station) {
+function updateMonitor(selectedStation) {
     const body = document.getElementById('pids-body');
     const now = new Date();
     const currentTime = now.getHours() * 60 + now.getMinutes();
-
-    let directions = {}; // To store only the soonest train for each destination
+    let directions = {};
 
     trainData.forEach(train => {
-        const stop = train.stops.find(s => s.station === station);
+        // Match by cleaning the JSON name to compare with cleaned dropdown name
+        const stop = train.stops.find(s => cleanStationName(s.station) === selectedStation);
+        
         if (stop) {
             const [h, m] = stop.departure.split(':').map(Number);
             const depMins = h * 60 + m;
-            const destination = train.stops[train.stops.length - 1].station;
+            const rawDest = train.stops[train.stops.length - 1].station;
+            const cleanDest = cleanStationName(rawDest);
 
-            // Rule: Train must be in the future, and only keep the earliest one for this "Smer"
             if (depMins >= currentTime) {
-                if (!directions[destination] || depMins < directions[destination].mins) {
-                    directions[destination] = {
+                if (!directions[cleanDest] || depMins < directions[cleanDest].mins) {
+                    directions[cleanDest] = {
                         id: train.train_id,
                         time: stop.departure,
                         mins: depMins,
-                        dest: destination
+                        dest: cleanDest
                     };
                 }
             }
         }
     });
 
-    // Convert the directions object back to a sorted array
     const displayList = Object.values(directions).sort((a, b) => a.mins - b.mins);
-
     body.innerHTML = displayList.map(d => `
         <div class="pids-row">
             <span class="pids-voz">${d.id}</span>
             <span class="pids-smer">${d.dest}</span>
             <span class="pids-vreme">${d.time}</span>
         </div>
-    `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">Нема полазака.</div>';
+    `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">No departures.</div>';
 }
 
+function findRoute() {
+    const start = document.getElementById('plan-from').value;
+    const end = document.getElementById('plan-to').value;
+    const container = document.getElementById('plan-results');
+    if(!start || !end) return;
 
-    function findRoute() {
-        const start = document.getElementById('plan-from').value;
-        const end = document.getElementById('plan-to').value;
-        const container = document.getElementById('plan-results');
-        if(!start || !end) return;
+    let results = [];
 
-        let results = [];
-
-        // 1. Check for DIRECT trains
-        trainData.forEach(train => {
-            const startIndex = train.stops.findIndex(s => s.station === start);
-            const endIndex = train.stops.findIndex(s => s.station === end);
-            
-            if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
-                results.push({
-                    type: "DIRECT",
-                    train1: train.train_id,
-                    depTime: train.stops[startIndex].departure,
-                    arrTime: train.stops[endIndex].arrival,
-                    depMins: timeToMins(train.stops[startIndex].departure)
-                });
-            }
-        });
-
-        // 2. If no direct trains, or if user wants more options, look for transfers
-        // (Simplified transfer logic for common hubs)
-        const hubs = ["Београд Центар", "Карађођев парк", "Раковица"];
-        if (results.length === 0) {
-            trainData.forEach(t1 => {
-                const sIdx = t1.stops.findIndex(s => s.station === start);
-                if (sIdx === -1) return;
-
-                hubs.forEach(hub => {
-                    const hIdx = t1.stops.findIndex(s => s.station === hub);
-                    if (hIdx === -1 || hIdx <= sIdx) return;
-
-                    const arrAtHub = t1.stops[hIdx].arrival;
-                    
-                    trainData.forEach(t2 => {
-                        const hIdx2 = t2.stops.findIndex(s => s.station === hub);
-                        const eIdx = t2.stops.findIndex(s => s.station === end);
-                        
-                        if (hIdx2 !== -1 && eIdx !== -1 && eIdx > hIdx2 && t1.train_id !== t2.train_id) {
-                            const depFromHub = t2.stops[hIdx2].departure;
-                            const waitTime = timeToMins(depFromHub) - timeToMins(arrAtHub);
-
-                            if (waitTime >= 4 && waitTime < 45) { // Buffer: 4-45 mins
-                                results.push({
-                                    type: "TRANSFER",
-                                    hub: hub,
-                                    train1: t1.train_id,
-                                    train2: t2.train_id,
-                                    depTime: t1.stops[sIdx].departure,
-                                    arrTime: t2.stops[eIdx].arrival,
-                                    depMins: timeToMins(t1.stops[sIdx].departure)
-                                });
-                            }
-                        }
-                    });
-                });
+    trainData.forEach(train => {
+        const startIndex = train.stops.findIndex(s => cleanStationName(s.station) === start);
+        const endIndex = train.stops.findIndex(s => cleanStationName(s.station) === end);
+        
+        if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
+            results.push({
+                type: "DIRECT",
+                train1: train.train_id,
+                depTime: train.stops[startIndex].departure,
+                arrTime: train.stops[endIndex].arrival,
+                depMins: timeToMins(train.stops[startIndex].departure)
             });
         }
+    });
 
-        results.sort((a, b) => a.depMins - b.depMins);
-        
-        container.innerHTML = results.map(r => `
-            <div class="result-card">
-                <div class="res-type">${r.type === 'DIRECT' ? 'Директан воз' : 'Преседање: ' + r.hub}</div>
-                <div class="res-main">
-                    <div class="res-time">${r.depTime} ➔ ${r.arrTime}</div>
-                    <div class="res-info">
-                        <div class="res-dest">Воз ${r.train1}${r.type === 'TRANSFER' ? ' / ' + r.train2 : ''}</div>
-                    </div>
+    results.sort((a, b) => a.depMins - b.depMins);
+    container.innerHTML = results.map(r => `
+        <div class="result-card">
+            <div class="res-type">Direct Train</div>
+            <div class="res-main">
+                <div class="res-time">${r.depTime} ➔ ${r.arrTime}</div>
+                <div class="res-info">
+                    <div class="res-dest">Train ${r.train1}</div>
                 </div>
             </div>
-        `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">Нема пронађених рута.</div>';
-    }
+        </div>
+    `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">No routes found.</div>';
+}
 
-    function timeToMins(t) {
-        const [h, m] = t.split(':').map(Number);
-        return h * 60 + m;
-    }
+function timeToMins(t) {
+    const [h, m] = t.split(':').map(Number);
+    return h * 60 + m;
+}
 
-    function openMonitor() { handleNav('monitor'); }
-    function openPlan() { handleNav('plan'); }
-        function handleNav(dest) {
+function handleNav(dest) {
     document.querySelectorAll('.page').forEach(p => { 
         p.classList.remove('active-up'); 
         p.classList.remove('fade-out'); 
@@ -319,16 +265,19 @@ function updateMonitor(station) {
         document.getElementById('landing-page').classList.add('active-up');
         document.getElementById('nav-home').classList.add('active');
     } else {
-        document.getElementById(dest + '-page').classList.add('active-up');
+        const page = document.getElementById(dest + '-page');
+        if(page) page.classList.add('active-up');
         document.getElementById('landing-page').classList.add('fade-out');
-        if(document.getElementById('nav-' + dest)) {
-            document.getElementById('nav-' + dest).classList.add('active');
-        }
+        const nav = document.getElementById('nav-' + dest);
+        if(nav) nav.classList.add('active');
     }
-        }
-        
+}
 
-    window.onload = loadData;
+function openMonitor() { handleNav('monitor'); }
+function openPlan() { handleNav('plan'); }
+
+window.onload = loadData;
+
 </script>
 </body>
 </html>
