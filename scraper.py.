@@ -1,0 +1,62 @@
+import requests
+from bs4 import BeautifulSoup
+import json
+from datetime import datetime
+
+# Configuration
+# This looks for all possible BG:VOZ train numbers
+TRAIN_RANGE = range(8000, 8500) 
+DATE_STR = datetime.now().strftime("%d.%m.%Y")
+OUTPUT_FILE = "trains.json" # Change this if your file is in a folder like "data/trains.json"
+
+def get_itinerary(train_id):
+    url = f"https://w3.srbvoz.rs/redvoznje/direktni/{train_id}/{DATE_STR}/en"
+    try:
+        response = requests.get(url, timeout=10)
+        if response.status_code != 200 or "No trains found" in response.text:
+            return None
+        
+        soup = BeautifulSoup(response.text, 'html.parser')
+        rows = soup.find_all('tr')[1:] # Skip the table header
+        
+        stops = []
+        for row in rows:
+            cols = row.find_all('td')
+            if len(cols) >= 3:
+                # Clean up station names (remove "Arr/Dep" and extra spaces)
+                name = cols[0].text.strip().replace(" (Arr)", "").replace(" (Dep)", "")
+                arr = cols[1].text.strip()
+                dep = cols[2].text.strip()
+                
+                stops.append({
+                    "station": name,
+                    "arrival": arr if arr else dep, # Use departure if arrival is empty (first stop)
+                    "departure": dep if dep else arr # Use arrival if departure is empty (last stop)
+                })
+        
+        if not stops: return None
+
+        return {
+            "train_id": str(train_id),
+            "line": "BG:VOZ", # You can add logic to detect Line 1 vs 2 here
+            "stops": stops
+        }
+    except Exception as e:
+        print(f"Error fetching {train_id}: {e}")
+        return None
+
+# Execution
+all_trains = []
+print(f"Starting scrape for {DATE_STR}...")
+
+for tid in TRAIN_RANGE:
+    data = get_itinerary(tid)
+    if data:
+        all_trains.append(data)
+        print(f"Found Train: {tid}")
+
+# Save the new JSON
+with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+    json.dump(all_trains, f, indent=2, ensure_ascii=False)
+
+print(f"Successfully saved {len(all_trains)} trains to {OUTPUT_FILE}")
