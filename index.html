@@ -285,6 +285,25 @@ function updateMonitor(station) {
 
     function openMonitor() { handleNav('monitor'); }
     function openPlan() { handleNav('plan'); }
+        function handleNav(dest) {
+    document.querySelectorAll('.page').forEach(p => { 
+        p.classList.remove('active-up'); 
+        p.classList.remove('fade-out'); 
+    });
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    
+    if(dest === 'home') {
+        document.getElementById('landing-page').classList.add('active-up');
+        document.getElementById('nav-home').classList.add('active');
+    } else {
+        document.getElementById(dest + '-page').classList.add('active-up');
+        document.getElementById('landing-page').classList.add('fade-out');
+        if(document.getElementById('nav-' + dest)) {
+            document.getElementById('nav-' + dest).classList.add('active');
+        }
+    }
+        }
+        
 
     window.onload = loadData;
 </script>
