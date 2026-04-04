@@ -152,66 +152,81 @@
     </nav>
 
     <script>
-    let trainData = [];
+let trainData = [];
 
-    // Load the JSON created by your Python Scraper
-    async function loadData() {
-        try {
-            const resp = await fetch('trains.json?v=' + new Date().getTime());
-            trainData = await resp.json();
-            console.log("Data loaded:", trainData.length, "trains");
-        } catch (e) {
-            console.error("Failed to load trains.json", e);
-        }
+async function loadData() {
+    try {
+        const resp = await fetch('trains.json?v=' + new Date().getTime());
+        trainData = await resp.json();
+        populateStationLists(); // Automatically fills your dropdowns
+        console.log("Data loaded and lists populated");
+    } catch (e) {
+        console.error("Failed to load trains.json", e);
     }
+}
 
-    function handleNav(dest) {
-        document.querySelectorAll('.page').forEach(p => { 
-            p.classList.remove('active-up'); p.classList.remove('fade-out'); 
-        });
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        if(dest === 'home') {
-            document.getElementById('landing-page').classList.add('active-up');
-            document.getElementById('nav-home').classList.add('active');
-        } else {
-            document.getElementById(dest + '-page').classList.add('active-up');
-            document.getElementById('landing-page').classList.add('fade-out');
-            document.getElementById('nav-' + dest).classList.add('active');
-        }
-    }
+function populateStationLists() {
+    // Collect every unique station name from the JSON
+    let allStations = new Set();
+    trainData.forEach(train => {
+        train.stops.forEach(s => allStations.add(s.station));
+    });
 
-    function updateMonitor(station) {
-        const body = document.getElementById('pids-body');
-        const now = new Date();
-        const currentTime = now.getHours() * 60 + now.getMinutes();
+    // Sort them alphabetically
+    const sortedStations = Array.from(allStations).sort();
 
-        // Filter trains stopping at this station
-        let departures = [];
-        trainData.forEach(train => {
-            const stop = train.stops.find(s => s.station === station);
-            if (stop) {
-                const [h, m] = stop.departure.split(':').map(Number);
-                const depMins = h * 60 + m;
-                if (depMins >= currentTime - 5) { // Show trains from last 5 mins up to end of day
-                    departures.push({
+    const picker = document.getElementById('station-picker');
+    const from = document.getElementById('plan-from');
+    const to = document.getElementById('plan-to');
+
+    sortedStations.forEach(name => {
+        const opt = `<option value="${name}">${name}</option>`;
+        picker.innerHTML += opt;
+        from.innerHTML += opt;
+        to.innerHTML += opt;
+    });
+}
+
+function updateMonitor(station) {
+    const body = document.getElementById('pids-body');
+    const now = new Date();
+    const currentTime = now.getHours() * 60 + now.getMinutes();
+
+    let directions = {}; // To store only the soonest train for each destination
+
+    trainData.forEach(train => {
+        const stop = train.stops.find(s => s.station === station);
+        if (stop) {
+            const [h, m] = stop.departure.split(':').map(Number);
+            const depMins = h * 60 + m;
+            const destination = train.stops[train.stops.length - 1].station;
+
+            // Rule: Train must be in the future, and only keep the earliest one for this "Smer"
+            if (depMins >= currentTime) {
+                if (!directions[destination] || depMins < directions[destination].mins) {
+                    directions[destination] = {
                         id: train.train_id,
                         time: stop.departure,
                         mins: depMins,
-                        dest: train.stops[train.stops.length - 1].station
-                    });
+                        dest: destination
+                    };
                 }
             }
-        });
+        }
+    });
 
-        departures.sort((a, b) => a.mins - b.mins);
-        body.innerHTML = departures.map(d => `
-            <div class="pids-row">
-                <span class="pids-voz">${d.id}</span>
-                <span class="pids-smer">${d.dest}</span>
-                <span class="pids-vreme">${d.time}</span>
-            </div>
-        `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">Нема више полазака за данас.</div>';
-    }
+    // Convert the directions object back to a sorted array
+    const displayList = Object.values(directions).sort((a, b) => a.mins - b.mins);
+
+    body.innerHTML = displayList.map(d => `
+        <div class="pids-row">
+            <span class="pids-voz">${d.id}</span>
+            <span class="pids-smer">${d.dest}</span>
+            <span class="pids-vreme">${d.time}</span>
+        </div>
+    `).join('') || '<div style="padding:20px; text-align:center; opacity:0.5;">Нема полазака.</div>';
+}
+
 
     function findRoute() {
         const start = document.getElementById('plan-from').value;
