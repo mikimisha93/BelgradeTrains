@@ -1,3 +1,32 @@
+STATION_MAP = {
+    "Batajnica": "Батајница",
+    "Kamendin": "Камендин",
+    "Zemun Polje": "Земун поље",
+    "Altina": "Алтина",
+    "Zemun": "Земун",
+    "Tošin Bunar": "Тошин бунар",
+    "Novi Beograd": "Нови Београд",
+    "Beograd Centar": "Београд Центар",
+    "Karađorđev Park": "Карађођев парк",
+    "Vukov Spomenik": "Вуков споменик",
+    "Pančevački Most": "Панчевачки мост",
+    "Krnjača Most": "Крњача мост",
+    "Krnjača": "Крњача",
+    "Sebeš": "Себеш",
+    "Ovča": "Овча",
+    "Rakovica": "Раковица",
+    "Kneževac": "Кнежевац",
+    "Kijevo": "Кијево",
+    "Resnik": "Ресник",
+    "Lazarevac": "Лазаревац",
+    "Vreoci": "Вреоци",
+    "Stepojevac": "Степојевац"
+}
+
+# Inside your get_itinerary function, change the name line to this:
+raw_name = cols[0].text.strip().replace(" (Arr)", "").replace(" (Dep)", "")
+name = STATION_MAP.get(raw_name, raw_name) # Translates if found, else keeps original
+
 import requests
 from bs4 import BeautifulSoup
 import json
