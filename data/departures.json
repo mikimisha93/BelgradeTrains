@@ -1,0 +1,1235 @@
+{
+  "generatedAt": "2026-04-14T09:36:33.962Z",
+  "date": "14.04.2026",
+  "stations": {
+    "BATAJNICA": {
+      "departures": [
+        {
+          "trainNo": "2421",
+          "departure": "00:23",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "00:43",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2400",
+          "departure": "04:51",
+          "destination": "PETROVARADIN",
+          "arrival": "05:21",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2401",
+          "departure": "04:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "05:13",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2402",
+          "departure": "05:51",
+          "destination": "PETROVARADIN",
+          "arrival": "06:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "741",
+          "departure": "05:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "06:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8001",
+          "departure": "06:00",
+          "destination": "OVCA",
+          "arrival": "06:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "721",
+          "departure": "06:11",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "06:28",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8003",
+          "departure": "06:30",
+          "destination": "OVCA",
+          "arrival": "07:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "740",
+          "departure": "06:48",
+          "destination": "PETROVARADIN",
+          "arrival": "07:20",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "743",
+          "departure": "06:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "720",
+          "departure": "07:03",
+          "destination": "ŠID",
+          "arrival": "08:43",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8005",
+          "departure": "07:10",
+          "destination": "OVCA",
+          "arrival": "07:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "745",
+          "departure": "07:28",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:45",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "8007",
+          "departure": "07:30",
+          "destination": "OVCA",
+          "arrival": "08:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2201",
+          "departure": "07:36",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:56",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. nedeljom i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "742",
+          "departure": "07:48",
+          "destination": "PETROVARADIN",
+          "arrival": "08:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2403",
+          "departure": "07:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "08:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8009",
+          "departure": "08:00",
+          "destination": "OVCA",
+          "arrival": "08:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8011",
+          "departure": "08:30",
+          "destination": "OVCA",
+          "arrival": "09:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2200",
+          "departure": "08:40",
+          "destination": "SREMSKA MITROVICA",
+          "arrival": "09:51",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2404",
+          "departure": "08:51",
+          "destination": "PETROVARADIN",
+          "arrival": "09:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "747",
+          "departure": "08:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "09:10",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "8013",
+          "departure": "08:57",
+          "destination": "OVCA",
+          "arrival": "09:54",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8015",
+          "departure": "09:30",
+          "destination": "OVCA",
+          "arrival": "10:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "744",
+          "departure": "09:48",
+          "destination": "PETROVARADIN",
+          "arrival": "10:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2405",
+          "departure": "09:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "10:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8017",
+          "departure": "10:10",
+          "destination": "OVCA",
+          "arrival": "10:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2407",
+          "departure": "10:43",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "11:03",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2406",
+          "departure": "10:51",
+          "destination": "PETROVARADIN",
+          "arrival": "11:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8019",
+          "departure": "11:20",
+          "destination": "OVCA",
+          "arrival": "12:08",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2203",
+          "departure": "11:29",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "11:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2408",
+          "departure": "11:51",
+          "destination": "PETROVARADIN",
+          "arrival": "12:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "749",
+          "departure": "11:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "12:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8021",
+          "departure": "12:00",
+          "destination": "OVCA",
+          "arrival": "12:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2202",
+          "departure": "12:30",
+          "destination": "ŠID",
+          "arrival": "14:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8023",
+          "departure": "12:35",
+          "destination": "OVCA",
+          "arrival": "13:23",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "746",
+          "departure": "12:48",
+          "destination": "PETROVARADIN",
+          "arrival": "13:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "751",
+          "departure": "12:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "13:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "723",
+          "departure": "13:31",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "13:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "748",
+          "departure": "13:48",
+          "destination": "PETROVARADIN",
+          "arrival": "14:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2409",
+          "departure": "13:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "14:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8025",
+          "departure": "14:00",
+          "destination": "OVCA",
+          "arrival": "14:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "722",
+          "departure": "14:28",
+          "destination": "ŠID",
+          "arrival": "16:08",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8027",
+          "departure": "14:30",
+          "destination": "OVCA",
+          "arrival": "15:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2410",
+          "departure": "14:51",
+          "destination": "PETROVARADIN",
+          "arrival": "15:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "753",
+          "departure": "14:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "15:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8029",
+          "departure": "15:10",
+          "destination": "OVCA",
+          "arrival": "15:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8031",
+          "departure": "15:30",
+          "destination": "OVCA",
+          "arrival": "16:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "750",
+          "departure": "15:48",
+          "destination": "PETROVARADIN",
+          "arrival": "16:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "755",
+          "departure": "15:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "16:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2205",
+          "departure": "15:57",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "16:15",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8033",
+          "departure": "16:00",
+          "destination": "OVCA",
+          "arrival": "16:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8035",
+          "departure": "16:30",
+          "destination": "OVCA",
+          "arrival": "17:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "752",
+          "departure": "16:38",
+          "destination": "PETROVARADIN",
+          "arrival": "17:10",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2411",
+          "departure": "16:43",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "17:03",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2204",
+          "departure": "16:53",
+          "destination": "ŠID",
+          "arrival": "18:35",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "754",
+          "departure": "16:58",
+          "destination": "PETROVARADIN",
+          "arrival": "17:30",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8037",
+          "departure": "17:10",
+          "destination": "OVCA",
+          "arrival": "17:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8039",
+          "departure": "17:30",
+          "destination": "OVCA",
+          "arrival": "18:18",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2412",
+          "departure": "17:51",
+          "destination": "PETROVARADIN",
+          "arrival": "18:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "757",
+          "departure": "17:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "18:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8041",
+          "departure": "18:30",
+          "destination": "OVCA",
+          "arrival": "19:18",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "725",
+          "departure": "18:40",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "18:57",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2413",
+          "departure": "18:43",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "19:03",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "756",
+          "departure": "18:48",
+          "destination": "PETROVARADIN",
+          "arrival": "19:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8043",
+          "departure": "19:10",
+          "destination": "OVCA",
+          "arrival": "19:58",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2414",
+          "departure": "19:51",
+          "destination": "PETROVARADIN",
+          "arrival": "20:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2415",
+          "departure": "19:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "20:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8045",
+          "departure": "20:00",
+          "destination": "OVCA",
+          "arrival": "20:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "724",
+          "departure": "20:03",
+          "destination": "ŠID",
+          "arrival": "21:43",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2416",
+          "departure": "20:51",
+          "destination": "PETROVARADIN",
+          "arrival": "21:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "759",
+          "departure": "20:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "21:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2207",
+          "departure": "21:26",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "21:45",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "758",
+          "departure": "21:48",
+          "destination": "PETROVARADIN",
+          "arrival": "22:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2417",
+          "departure": "21:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "22:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2230",
+          "departure": "22:36",
+          "destination": "RUMA",
+          "arrival": "23:10",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. subotom i 31 dec 2025., 1 i 6 jan, 14, 15 i 16 feb, 9, 11, 12 i 30 apr, 1 maj, 10  nov 2026"
+        },
+        {
+          "trainNo": "2419",
+          "departure": "22:43",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "23:03",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2418",
+          "departure": "22:51",
+          "destination": "PETROVARADIN",
+          "arrival": "23:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2420",
+          "departure": "23:51",
+          "destination": "PETROVARADIN",
+          "arrival": "00:21",
+          "rank": null,
+          "delay": null,
+          "note": null
+        }
+      ]
+    },
+    "BEOGRAD CENTAR": {
+      "departures": []
+    },
+    "NOVI BEOGRAD": {
+      "departures": []
+    },
+    "ZEMUN": {
+      "departures": [
+        {
+          "trainNo": "7101",
+          "departure": "04:32",
+          "destination": "LAZAREVAC",
+          "arrival": "05:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8301",
+          "departure": "05:45",
+          "destination": "OVCA",
+          "arrival": "06:17",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7103",
+          "departure": "06:24",
+          "destination": "LAZAREVAC",
+          "arrival": "07:33",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7100",
+          "departure": "06:35",
+          "destination": "OVCA",
+          "arrival": "07:07",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8300",
+          "departure": "06:53",
+          "destination": "RESNIK",
+          "arrival": "06:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7102",
+          "departure": "07:04",
+          "destination": "OVCA",
+          "arrival": "07:33",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8303",
+          "departure": "08:05",
+          "destination": "OVCA",
+          "arrival": "08:37",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8302",
+          "departure": "08:08",
+          "destination": "RESNIK",
+          "arrival": "08:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7105",
+          "departure": "08:19",
+          "destination": "LAZAREVAC",
+          "arrival": "09:06",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7104",
+          "departure": "08:50",
+          "destination": "OVCA",
+          "arrival": "09:23",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8304",
+          "departure": "08:53",
+          "destination": "RESNIK",
+          "arrival": "08:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8305",
+          "departure": "09:35",
+          "destination": "OVCA",
+          "arrival": "10:07",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8308",
+          "departure": "09:51",
+          "destination": "RESNIK",
+          "arrival": "09:56",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8307",
+          "departure": "10:05",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "10:17",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8205",
+          "departure": "10:52",
+          "destination": "RESNIK",
+          "arrival": "10:57",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8311",
+          "departure": "11:05",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "11:17",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8312",
+          "departure": "11:08",
+          "destination": "RESNIK",
+          "arrival": "11:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8313",
+          "departure": "11:45",
+          "destination": "OVCA",
+          "arrival": "12:17",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8207",
+          "departure": "11:52",
+          "destination": "RESNIK",
+          "arrival": "11:57",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7107",
+          "departure": "12:23",
+          "destination": "LAZAREVAC",
+          "arrival": "13:13",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7106",
+          "departure": "12:30",
+          "destination": "OVCA",
+          "arrival": "13:02",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8317",
+          "departure": "12:55",
+          "destination": "OVCA",
+          "arrival": "13:27",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8314",
+          "departure": "13:13",
+          "destination": "RESNIK",
+          "arrival": "13:18",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8319",
+          "departure": "13:25",
+          "destination": "OVCA",
+          "arrival": "13:57",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8316",
+          "departure": "13:58",
+          "destination": "RESNIK",
+          "arrival": "14:03",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8321",
+          "departure": "14:05",
+          "destination": "OVCA",
+          "arrival": "14:37",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8323",
+          "departure": "14:25",
+          "destination": "OVCA",
+          "arrival": "14:57",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8318",
+          "departure": "14:28",
+          "destination": "RESNIK",
+          "arrival": "14:33",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8320",
+          "departure": "14:53",
+          "destination": "RESNIK",
+          "arrival": "14:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7108",
+          "departure": "14:55",
+          "destination": "ZEMUN",
+          "arrival": "15:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8325",
+          "departure": "15:05",
+          "destination": "OVCA",
+          "arrival": "15:37",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8322",
+          "departure": "15:33",
+          "destination": "RESNIK",
+          "arrival": "15:38",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8327",
+          "departure": "15:35",
+          "destination": "OVCA",
+          "arrival": "16:07",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7111",
+          "departure": "15:55",
+          "destination": "LAZAREVAC",
+          "arrival": "16:43",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7903",
+          "departure": "16:25",
+          "destination": "RESNIK",
+          "arrival": "16:30",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8329",
+          "departure": "16:35",
+          "destination": "OVCA",
+          "arrival": "17:07",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7113",
+          "departure": "16:39",
+          "destination": "LAZAREVAC",
+          "arrival": "17:32",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8324",
+          "departure": "17:03",
+          "destination": "RESNIK",
+          "arrival": "17:08",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8331",
+          "departure": "17:05",
+          "destination": "OVCA",
+          "arrival": "17:37",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8333",
+          "departure": "17:35",
+          "destination": "OVCA",
+          "arrival": "18:07",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7112",
+          "departure": "18:00",
+          "destination": "OVCA",
+          "arrival": "18:32",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8326",
+          "departure": "18:03",
+          "destination": "RESNIK",
+          "arrival": "18:08",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8335",
+          "departure": "18:35",
+          "destination": "OVCA",
+          "arrival": "19:07",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8328",
+          "departure": "18:43",
+          "destination": "RESNIK",
+          "arrival": "18:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7115",
+          "departure": "19:03",
+          "destination": "LAZAREVAC",
+          "arrival": "19:54",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7904",
+          "departure": "19:30",
+          "destination": "OVCA",
+          "arrival": "20:02",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8332",
+          "departure": "19:33",
+          "destination": "RESNIK",
+          "arrival": "19:38",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7114",
+          "departure": "19:57",
+          "destination": "ZEMUN",
+          "arrival": "20:20",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8334",
+          "departure": "20:23",
+          "destination": "RESNIK",
+          "arrival": "20:28",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8336",
+          "departure": "21:03",
+          "destination": "RESNIK",
+          "arrival": "21:08",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8337",
+          "departure": "21:05",
+          "destination": "OVCA",
+          "arrival": "21:37",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "7116",
+          "departure": "21:35",
+          "destination": "ZEMUN",
+          "arrival": "21:58",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8339",
+          "departure": "21:45",
+          "destination": "OVCA",
+          "arrival": "22:17",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "8338",
+          "departure": "22:33",
+          "destination": "RESNIK",
+          "arrival": "22:38",
+          "rank": null,
+          "delay": null,
+          "note": null
+        }
+      ]
+    },
+    "BEOGRAD DUNAV": {
+      "departures": []
+    },
+    "PANČEVO VOJLOVICA": {
+      "departures": []
+    },
+    "OVCA": {
+      "departures": []
+    },
+    "RESNIK": {
+      "departures": []
+    },
+    "RAKOVICA": {
+      "departures": []
+    },
+    "BEOGRAD PROKOP": {
+      "departures": []
+    }
+  }
+}
