@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>БГ:ВОЗ — Табла полазака</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0a0c10;
+      --surface:   #111520;
+      --border:    #1e2a3a;
+      --amber:     #f5a623;
+      --amber-dim: #7a5110;
+      --green:     #22c55e;
+      --red:       #ef4444;
+      --blue:      #3b82f6;
+      --text:      #dde3ef;
+      --muted:     #4a5568;
+      --font-mono: 'Share Tech Mono', monospace;
+      --font-ui:   'Rajdhani', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-ui);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 2px solid var(--amber);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+    }
+    .logo span { color: var(--text); opacity: 0.5; font-size: 0.85rem; margin-left: 10px; }
+
+    #clock {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+    }
+
+    #last-updated {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ── Controls ── */
+    .controls {
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .controls label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    select, input[type="text"] {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    select:focus, input:focus { border-color: var(--amber); }
+
+    #filter-input {
+      width: 180px;
+    }
+
+    #refresh-btn {
+      margin-left: auto;
+      background: transparent;
+      border: 1px solid var(--amber-dim);
+      color: var(--amber);
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #refresh-btn:hover { background: rgba(245,166,35,0.1); border-color: var(--amber); }
+
+    /* ── Status bar ── */
+    #status {
+      padding: 6px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      min-height: 28px;
+    }
+    #status.error { color: var(--red); }
+    #status.ok    { color: var(--green); }
+
+    /* ── Table ── */
+    .table-wrap {
+      overflow-x: auto;
+      padding: 0 24px 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    thead tr {
+      border-bottom: 2px solid var(--amber-dim);
+    }
+
+    thead th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--amber-dim);
+      font-family: var(--font-mono);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+      cursor: default;
+    }
+    tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+    /* Highlight next departure */
+    tbody tr.next-dep {
+      background: rgba(245,166,35,0.06);
+      border-left: 3px solid var(--amber);
+    }
+
+    tbody td {
+      padding: 11px 14px;
+      vertical-align: middle;
+    }
+
+    .td-time {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      color: var(--amber);
+      white-space: nowrap;
+      min-width: 70px;
+    }
+
+    .td-train {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .td-dest {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .td-arrival {
+      font-family: var(--font-mono);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .badge-delay {
+      display: inline-block;
+      background: rgba(239,68,68,0.15);
+      border: 1px solid var(--red);
+      color: var(--red);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .td-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      max-width: 300px;
+      line-height: 1.4;
+    }
+
+    .countdown {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .countdown.soon { color: var(--amber); }
+    .countdown.gone { color: var(--muted); }
+
+    /* ── Empty / loading ── */
+    .msg {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+    }
+
+    /* ── Scanline overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 12px 16px; }
+      .controls { padding: 12px 16px; }
+      .table-wrap { padding: 0 8px 40px; }
+      .td-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">БГ:ВОЗ <span>TABLA POLAZAKA</span></div>
+    <div id="last-updated">—</div>
+  </div>
+  <div id="clock">--:--:--</div>
+</header>
+
+<div class="controls">
+  <label for="station-select">Станица:</label>
+  <select id="station-select">
+    <option value="">— учитавање —</option>
+  </select>
+
+  <label for="filter-input" style="margin-left:16px;">Одредиште:</label>
+  <input type="text" id="filter-input" placeholder="нпр. BEOGRAD" />
+
+  <button id="refresh-btn">⟳ ОСВЕЖИ</button>
+</div>
+
+<div id="status">Учитавање...</div>
+
+<div class="table-wrap">
+  <table id="dep-table">
+    <thead>
+      <tr>
+        <th>Полазак</th>
+        <th>Воз бр.</th>
+        <th>Одредиште</th>
+        <th>Долазак</th>
+        <th>Кашњење</th>
+        <th>За</th>
+        <th>Напомена</th>
+      </tr>
+    </thead>
+    <tbody id="dep-tbody">
+      <tr><td colspan="7" class="msg">Учитавање података…</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // ── Config ──────────────────────────────────────────────────────────────────
+  // Path to your departures.json relative to this HTML file in the repo
+  const DATA_URL = 'data/departures.json';
+
+  // ── State ───────────────────────────────────────────────────────────────────
+  let allData   = null;
+  let currentStation = null;
+
+  // ── Clock ───────────────────────────────────────────────────────────────────
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('clock').textContent =
+      now.toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // ── Load data ────────────────────────────────────────────────────────────────
+  async function loadData() {
+    setStatus('Учитавање…', '');
+    try {
+      const res = await fetch(DATA_URL + '?t=' + Date.now());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      allData = await res.json();
+
+      const stations = Object.keys(allData.stations);
+      const sel = document.getElementById('station-select');
+      sel.innerHTML = stations
+        .map(s => `<option value="${s}">${s}</option>`)
+        .join('');
+
+      const ts = new Date(allData.generatedAt);
+      document.getElementById('last-updated').textContent =
+        `Ажурирано: ${ts.toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit' })} · ${allData.date}`;
+
+      // Restore or default
+      if (currentStation && stations.includes(currentStation)) {
+        sel.value = currentStation;
+      } else {
+        currentStation = stations[0];
+        sel.value = currentStation;
+      }
+
+      setStatus(`Подаци за ${allData.date} · ${stations.length} станица`, 'ok');
+      renderTable();
+    } catch (err) {
+      setStatus('Грешка при учитавању: ' + err.message, 'error');
+      document.getElementById('dep-tbody').innerHTML =
+        `<tr><td colspan="7" class="msg" style="color:var(--red)">Нема података — ${err.message}</td></tr>`;
+    }
+  }
+
+  // ── Render table ─────────────────────────────────────────────────────────────
+  function renderTable() {
+    if (!allData || !currentStation) return;
+
+    const stationData = allData.stations[currentStation];
+    if (!stationData) return;
+
+    const filterText = document.getElementById('filter-input').value.trim().toUpperCase();
+    let departures = stationData.departures || [];
+
+    if (filterText) {
+      departures = departures.filter(d => d.destination.toUpperCase().includes(filterText));
+    }
+
+    const tbody = document.getElementById('dep-tbody');
+
+    if (departures.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7" class="msg">Нема полазака за ову станицу.</td></tr>`;
+      return;
+    }
+
+    const nowMins = nowInMinutes();
+    // find index of next departure
+    let nextIdx = departures.findIndex(d => timeToMinutes(d.departure) >= nowMins);
+
+    tbody.innerHTML = departures.map((d, i) => {
+      const depMins = timeToMinutes(d.departure);
+      const diff = depMins - nowMins;
+
+      let countdownHTML = '';
+      let rowClass = '';
+
+      if (i === nextIdx) {
+        rowClass = 'next-dep';
+        countdownHTML = diff <= 1
+          ? `<span class="countdown soon">одмах</span>`
+          : `<span class="countdown soon">${diff} мин</span>`;
+      } else if (diff < 0) {
+        // already departed — dim
+        const ago = Math.abs(diff);
+        countdownHTML = `<span class="countdown gone">пре ${ago} мин</span>`;
+      } else {
+        countdownHTML = `<span class="countdown">${diff} мин</span>`;
+      }
+
+      const delayCell = d.delay
+        ? `<span class="badge-delay">+${d.delay}'</span>`
+        : `<span style="color:var(--muted);font-family:var(--font-mono);font-size:0.8rem;">—</span>`;
+
+      return `
+        <tr class="${rowClass}">
+          <td class="td-time">${d.departure}</td>
+          <td class="td-train">${d.trainNo}</td>
+          <td class="td-dest">${d.destination}</td>
+          <td class="td-arrival">${d.arrival}</td>
+          <td>${delayCell}</td>
+          <td>${countdownHTML}</td>
+          <td class="td-note">${d.note || ''}</td>
+        </tr>`;
+    }).join('');
+  }
+
+  // ── Helpers ──────────────────────────────────────────────────────────────────
+  function timeToMinutes(t) {
+    if (!t || !t.includes(':')) return 9999;
+    const [h, m] = t.split(':').map(Number);
+    return h * 60 + m;
+  }
+
+  function nowInMinutes() {
+    const n = new Date();
+    return n.getHours() * 60 + n.getMinutes();
+  }
+
+  function setStatus(msg, type) {
+    const el = document.getElementById('status');
+    el.textContent = msg;
+    el.className = type || '';
+  }
+
+  // ── Auto-refresh table every 30s (countdown updates)
+  setInterval(renderTable, 30000);
+
+  // ── Auto-reload data every 5 minutes
+  setInterval(loadData, 5 * 60 * 1000);
+
+  // ── Events ───────────────────────────────────────────────────────────────────
+  document.getElementById('station-select').addEventListener('change', e => {
+    currentStation = e.target.value;
+    renderTable();
+  });
+
+  document.getElementById('filter-input').addEventListener('input', renderTable);
+
+  document.getElementById('refresh-btn').addEventListener('click', loadData);
+
+  // ── Init ─────────────────────────────────────────────────────────────────────
+  loadData();
+</script>
+</body>
+</html>
