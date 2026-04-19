@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-18T23:54:45.496Z",
-  "date": "18.04.2026",
+  "generatedAt": "2026-04-19T06:18:52.734Z",
+  "date": "19.04.2026",
   "stations": {
     "BATAJNICA": {
       "departures": [
@@ -75,15 +75,6 @@
           "rank": null,
           "delay": null,
           "note": null
-        },
-        {
-          "trainNo": "2201",
-          "departure": "07:36",
-          "destination": "BEOGRAD CENTAR",
-          "arrival": "07:56",
-          "rank": null,
-          "delay": null,
-          "note": "Ne saob. nedeljom i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "742",
@@ -552,6 +543,15 @@
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "2230",
+          "departure": "22:36",
+          "destination": "RUMA",
+          "arrival": "23:10",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. subotom i 31 dec 2025., 1 i 6 jan, 14, 15 i 16 feb, 9, 11, 12 i 30 apr, 1 maj, 10  nov 2026"
         },
         {
           "trainNo": "2419",
