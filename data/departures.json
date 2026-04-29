@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-28T23:57:15.304Z",
-  "date": "28.04.2026",
+  "generatedAt": "2026-04-29T03:53:21.705Z",
+  "date": "29.04.2026",
   "stations": {
     "BATAJNICA": {
       "departures": [
@@ -678,15 +678,6 @@
           "rank": null,
           "delay": null,
           "note": null
-        },
-        {
-          "trainNo": "2230",
-          "departure": "22:36",
-          "destination": "RUMA",
-          "arrival": "23:10",
-          "rank": null,
-          "delay": null,
-          "note": "Ne saob. subotom i 31 dec 2025., 1 i 6 jan, 14, 15 i 16 feb, 9, 11, 12 i 30 apr, 1 maj, 10  nov 2026"
         },
         {
           "trainNo": "2419",
