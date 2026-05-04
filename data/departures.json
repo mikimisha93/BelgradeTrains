@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-03T23:51:51.332Z",
-  "date": "03.05.2026",
+  "generatedAt": "2026-05-04T03:31:48.808Z",
+  "date": "04.05.2026",
   "stations": {
     "BATAJNICA": {
       "departures": [
@@ -12,6 +12,24 @@
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "2400",
+          "departure": "04:51",
+          "destination": "PETROVARADIN",
+          "arrival": "05:21",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2401",
+          "departure": "04:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "05:13",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "2402",
@@ -50,6 +68,24 @@
           "note": null
         },
         {
+          "trainNo": "8003",
+          "departure": "06:30",
+          "destination": "OVCA",
+          "arrival": "07:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "740",
+          "departure": "06:48",
+          "destination": "PETROVARADIN",
+          "arrival": "07:20",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
           "trainNo": "743",
           "departure": "06:53",
           "destination": "BEOGRAD CENTAR",
@@ -75,6 +111,33 @@
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "745",
+          "departure": "07:28",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:45",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "8007",
+          "departure": "07:30",
+          "destination": "OVCA",
+          "arrival": "08:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2201",
+          "departure": "07:36",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:56",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. nedeljom i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "742",
@@ -104,6 +167,15 @@
           "note": null
         },
         {
+          "trainNo": "8011",
+          "departure": "08:30",
+          "destination": "OVCA",
+          "arrival": "09:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
           "trainNo": "2200",
           "departure": "08:40",
           "destination": "SREMSKA MITROVICA",
@@ -122,6 +194,15 @@
           "note": null
         },
         {
+          "trainNo": "747",
+          "departure": "08:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "09:10",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
           "trainNo": "8013",
           "departure": "08:57",
           "destination": "OVCA",
@@ -129,6 +210,15 @@
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "8015",
+          "departure": "09:30",
+          "destination": "OVCA",
+          "arrival": "10:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "744",
@@ -302,6 +392,15 @@
           "note": null
         },
         {
+          "trainNo": "8027",
+          "departure": "14:30",
+          "destination": "OVCA",
+          "arrival": "15:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
           "trainNo": "2410",
           "departure": "14:51",
           "destination": "PETROVARADIN",
@@ -327,6 +426,15 @@
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "8031",
+          "departure": "15:30",
+          "destination": "OVCA",
+          "arrival": "16:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "750",
@@ -363,6 +471,24 @@
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "8035",
+          "departure": "16:30",
+          "destination": "OVCA",
+          "arrival": "17:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "752",
+          "departure": "16:38",
+          "destination": "PETROVARADIN",
+          "arrival": "17:10",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "2411",
@@ -462,6 +588,15 @@
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "8043",
+          "departure": "19:10",
+          "destination": "OVCA",
+          "arrival": "19:58",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "2414",
