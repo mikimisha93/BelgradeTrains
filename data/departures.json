@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-28T15:24:53.016Z",
+  "generatedAt": "2026-06-28T17:24:37.916Z",
   "date": "28.06.2026",
   "stations": {
     "BATAJNICA": {
@@ -24,11 +24,11 @@
     },
     "PANČEVO VOJLOVICA": {
       "departures": [],
-      "error": "request to https://w3.srbvoz.rs/redvoznje//stanicni/PAN%C4%8CEVO%20VOJLOVICA/16210/28.06.2026/0000/polazak/999/sr failed, reason: read ECONNRESET"
+      "error": "request to https://w3.srbvoz.rs/redvoznje//stanicni/PAN%C4%8CEVO%20VOJLOVICA/16210/28.06.2026/0000/polazak/999/sr failed, reason: connect ETIMEDOUT 212.200.168.5:443"
     },
     "OVCA": {
       "departures": [],
-      "error": "request to https://w3.srbvoz.rs/redvoznje//stanicni/OVCA/16214/28.06.2026/0000/polazak/999/sr failed, reason: read ECONNRESET"
+      "error": "request to https://w3.srbvoz.rs/redvoznje//stanicni/OVCA/16214/28.06.2026/0000/polazak/999/sr failed, reason: connect ETIMEDOUT 212.200.168.5:443"
     },
     "RESNIK": {
       "departures": [],
