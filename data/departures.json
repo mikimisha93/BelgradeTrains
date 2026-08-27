@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-26T22:53:18.491Z",
-  "date": "26.08.2026",
+  "generatedAt": "2026-08-27T04:23:39.123Z",
+  "date": "27.08.2026",
   "stations": {
     "BATAJNICA": {
       "departures": []
@@ -30,8 +30,7 @@
       "departures": []
     },
     "BEOGRAD PROKOP": {
-      "departures": [],
-      "error": "HTTP 500"
+      "departures": []
     }
   }
 }
