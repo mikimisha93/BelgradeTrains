@@ -1,9 +1,10 @@
 {
-  "generatedAt": "2026-08-30T22:30:25.483Z",
-  "date": "30.08.2026",
+  "generatedAt": "2026-08-31T01:11:27.614Z",
+  "date": "31.08.2026",
   "stations": {
     "BATAJNICA": {
-      "departures": []
+      "departures": [],
+      "error": "HTTP 500"
     },
     "BEOGRAD CENTAR": {
       "departures": []
