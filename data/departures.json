@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T03:44:35.623Z",
+  "generatedAt": "2026-09-09T08:47:44.679Z",
   "date": "09.09.2026",
   "stations": {
     "BATAJNICA": {
@@ -96,9 +96,9 @@
         },
         {
           "trainNo": "720",
-          "departure": "07:08",
+          "departure": "07:03",
           "destination": "ŠID",
-          "arrival": "08:47",
+          "arrival": "08:43",
           "rank": null,
           "delay": null,
           "note": null
