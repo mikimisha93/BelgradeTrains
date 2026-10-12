@@ -1,29 +1,47 @@
 {
-  "generatedAt": "2026-10-11T23:36:28.384Z",
-  "date": "11.10.2026",
+  "generatedAt": "2026-10-12T05:00:11.788Z",
+  "date": "12.10.2026",
   "stations": {
     "BATAJNICA": {
       "departures": [
         {
-          "trainNo": "2421",
+          "trainNo": "32421",
           "departure": "00:23",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "00:43",
+          "arrival": "00:49",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2402",
+          "trainNo": "32400",
+          "departure": "04:51",
+          "destination": "TPS NOVI SAD",
+          "arrival": "05:31",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "32401",
+          "departure": "04:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "05:19",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "32402",
           "departure": "05:51",
-          "destination": "PETROVARADIN",
-          "arrival": "06:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "06:31",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "741",
+          "trainNo": "12741",
           "departure": "05:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "06:10",
@@ -50,7 +68,25 @@
           "note": null
         },
         {
-          "trainNo": "743",
+          "trainNo": "8003",
+          "departure": "06:30",
+          "destination": "OVCA",
+          "arrival": "07:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12740",
+          "departure": "06:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "07:30",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12743",
           "departure": "06:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "07:10",
@@ -77,19 +113,46 @@
           "note": null
         },
         {
-          "trainNo": "742",
+          "trainNo": "12745",
+          "departure": "07:28",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:45",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "8007",
+          "departure": "07:30",
+          "destination": "OVCA",
+          "arrival": "08:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "2201",
+          "departure": "07:36",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:56",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. nedeljom i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12742",
           "departure": "07:48",
-          "destination": "PETROVARADIN",
-          "arrival": "08:20",
+          "destination": "TPS NOVI SAD",
+          "arrival": "08:30",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2403",
+          "trainNo": "32403",
           "departure": "07:53",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "08:13",
+          "arrival": "08:19",
           "rank": null,
           "delay": null,
           "note": null
@@ -104,6 +167,15 @@
           "note": null
         },
         {
+          "trainNo": "8011",
+          "departure": "08:30",
+          "destination": "OVCA",
+          "arrival": "09:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
           "trainNo": "2200",
           "departure": "08:40",
           "destination": "SREMSKA MITROVICA",
@@ -113,13 +185,22 @@
           "note": null
         },
         {
-          "trainNo": "2404",
+          "trainNo": "32404",
           "departure": "08:51",
-          "destination": "PETROVARADIN",
-          "arrival": "09:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "09:31",
           "rank": null,
           "delay": null,
           "note": null
+        },
+        {
+          "trainNo": "12747",
+          "departure": "08:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "09:10",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
           "trainNo": "8013",
@@ -131,19 +212,28 @@
           "note": null
         },
         {
-          "trainNo": "744",
+          "trainNo": "8015",
+          "departure": "09:30",
+          "destination": "OVCA",
+          "arrival": "10:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12744",
           "departure": "09:48",
-          "destination": "PETROVARADIN",
-          "arrival": "10:20",
+          "destination": "TPS NOVI SAD",
+          "arrival": "10:30",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2405",
+          "trainNo": "32405",
           "departure": "09:53",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "10:13",
+          "arrival": "10:19",
           "rank": null,
           "delay": null,
           "note": null
@@ -158,19 +248,19 @@
           "note": null
         },
         {
-          "trainNo": "2407",
+          "trainNo": "32407",
           "departure": "10:43",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "11:03",
+          "arrival": "11:09",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2406",
+          "trainNo": "32406",
           "departure": "10:51",
-          "destination": "PETROVARADIN",
-          "arrival": "11:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "11:31",
           "rank": null,
           "delay": null,
           "note": null
@@ -194,16 +284,16 @@
           "note": null
         },
         {
-          "trainNo": "2408",
+          "trainNo": "32408",
           "departure": "11:51",
-          "destination": "PETROVARADIN",
-          "arrival": "12:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "12:31",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "749",
+          "trainNo": "12749",
           "departure": "11:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "12:10",
@@ -239,16 +329,16 @@
           "note": null
         },
         {
-          "trainNo": "746",
+          "trainNo": "12746",
           "departure": "12:48",
-          "destination": "PETROVARADIN",
-          "arrival": "13:20",
+          "destination": "TPS NOVI SAD",
+          "arrival": "13:30",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "751",
+          "trainNo": "12751",
           "departure": "12:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "13:10",
@@ -266,19 +356,19 @@
           "note": null
         },
         {
-          "trainNo": "748",
+          "trainNo": "12748",
           "departure": "13:48",
-          "destination": "PETROVARADIN",
-          "arrival": "14:20",
+          "destination": "TPS NOVI SAD",
+          "arrival": "14:30",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2409",
+          "trainNo": "32409",
           "departure": "13:53",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "14:13",
+          "arrival": "14:19",
           "rank": null,
           "delay": null,
           "note": null
@@ -302,16 +392,25 @@
           "note": null
         },
         {
-          "trainNo": "2410",
+          "trainNo": "8027",
+          "departure": "14:30",
+          "destination": "OVCA",
+          "arrival": "15:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "32410",
           "departure": "14:51",
-          "destination": "PETROVARADIN",
-          "arrival": "15:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "15:31",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "753",
+          "trainNo": "12753",
           "departure": "14:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "15:10",
@@ -329,16 +428,25 @@
           "note": null
         },
         {
-          "trainNo": "750",
+          "trainNo": "8031",
+          "departure": "15:30",
+          "destination": "OVCA",
+          "arrival": "16:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12750",
           "departure": "15:48",
-          "destination": "PETROVARADIN",
-          "arrival": "16:20",
+          "destination": "TPS NOVI SAD",
+          "arrival": "16:30",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "755",
+          "trainNo": "12755",
           "departure": "15:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "16:10",
@@ -365,10 +473,28 @@
           "note": null
         },
         {
-          "trainNo": "2411",
+          "trainNo": "8035",
+          "departure": "16:30",
+          "destination": "OVCA",
+          "arrival": "17:18",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12752",
+          "departure": "16:38",
+          "destination": "TPS NOVI SAD",
+          "arrival": "17:20",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "32411",
           "departure": "16:43",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "17:03",
+          "arrival": "17:09",
           "rank": null,
           "delay": null,
           "note": null
@@ -383,10 +509,10 @@
           "note": null
         },
         {
-          "trainNo": "754",
+          "trainNo": "12754",
           "departure": "16:58",
-          "destination": "PETROVARADIN",
-          "arrival": "17:30",
+          "destination": "TPS NOVI SAD",
+          "arrival": "17:40",
           "rank": null,
           "delay": null,
           "note": null
@@ -410,16 +536,16 @@
           "note": null
         },
         {
-          "trainNo": "2412",
+          "trainNo": "32412",
           "departure": "17:51",
-          "destination": "PETROVARADIN",
-          "arrival": "18:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "18:31",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "757",
+          "trainNo": "12757",
           "departure": "17:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "18:10",
@@ -446,37 +572,46 @@
           "note": null
         },
         {
-          "trainNo": "2413",
+          "trainNo": "32413",
           "departure": "18:43",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "19:03",
+          "arrival": "19:09",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "756",
+          "trainNo": "12756",
           "departure": "18:48",
-          "destination": "PETROVARADIN",
-          "arrival": "19:20",
+          "destination": "TPS NOVI SAD",
+          "arrival": "19:30",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2414",
+          "trainNo": "8043",
+          "departure": "19:10",
+          "destination": "OVCA",
+          "arrival": "19:58",
+          "rank": null,
+          "delay": null,
+          "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "32414",
           "departure": "19:51",
-          "destination": "PETROVARADIN",
-          "arrival": "20:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "20:31",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2415",
+          "trainNo": "32415",
           "departure": "19:53",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "20:13",
+          "arrival": "20:19",
           "rank": null,
           "delay": null,
           "note": null
@@ -500,16 +635,16 @@
           "note": null
         },
         {
-          "trainNo": "2416",
+          "trainNo": "32416",
           "departure": "20:51",
-          "destination": "PETROVARADIN",
-          "arrival": "21:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "21:31",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "759",
+          "trainNo": "12759",
           "departure": "20:53",
           "destination": "BEOGRAD CENTAR",
           "arrival": "21:10",
@@ -527,19 +662,19 @@
           "note": null
         },
         {
-          "trainNo": "758",
+          "trainNo": "12758",
           "departure": "21:48",
-          "destination": "PETROVARADIN",
-          "arrival": "22:20",
+          "destination": "TPS NOVI SAD",
+          "arrival": "22:30",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2417",
+          "trainNo": "32417",
           "departure": "21:53",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "22:13",
+          "arrival": "22:19",
           "rank": null,
           "delay": null,
           "note": null
@@ -554,16 +689,16 @@
           "note": "Ne saob. subotom i 31 dec 2025., 1 i 6 jan, 14, 15 i 16 feb, 9, 11, 12 i 30 apr, 1 maj, 10  nov 2026"
         },
         {
-          "trainNo": "2419",
+          "trainNo": "32419",
           "departure": "22:43",
           "destination": "BEOGRAD CENTAR",
-          "arrival": "23:03",
+          "arrival": "23:09",
           "rank": null,
           "delay": null,
           "note": null
         },
         {
-          "trainNo": "2418",
+          "trainNo": "32418",
           "departure": "22:51",
           "destination": "PETROVARADIN",
           "arrival": "23:21",
@@ -572,10 +707,10 @@
           "note": null
         },
         {
-          "trainNo": "2420",
+          "trainNo": "32420",
           "departure": "23:51",
-          "destination": "PETROVARADIN",
-          "arrival": "00:21",
+          "destination": "TPS NOVI SAD",
+          "arrival": "00:31",
           "rank": null,
           "delay": null,
           "note": null
