@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T14:06:07.281Z",
+  "generatedAt": "2026-10-15T18:56:17.849Z",
   "date": "15.10.2026",
   "stations": {
     "BATAJNICA": {
@@ -86,6 +86,15 @@
           "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
+          "trainNo": "12743",
+          "departure": "06:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "07:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "720",
           "departure": "07:03",
           "destination": "ŠID",
@@ -129,6 +138,15 @@
           "rank": null,
           "delay": null,
           "note": "Ne saob. nedeljom i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12742",
+          "departure": "07:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "08:30",
+          "rank": null,
+          "delay": null,
+          "note": null
         },
         {
           "trainNo": "32403",
@@ -203,6 +221,15 @@
           "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
         },
         {
+          "trainNo": "12744",
+          "departure": "09:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "10:30",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "32405",
           "departure": "09:53",
           "destination": "BEOGRAD CENTAR",
@@ -266,6 +293,15 @@
           "note": null
         },
         {
+          "trainNo": "12749",
+          "departure": "11:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "12:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "8021",
           "departure": "12:00",
           "destination": "OVCA",
@@ -293,10 +329,37 @@
           "note": null
         },
         {
+          "trainNo": "12746",
+          "departure": "12:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "13:30",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "12751",
+          "departure": "12:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "13:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "723",
           "departure": "13:31",
           "destination": "BEOGRAD CENTAR",
           "arrival": "13:48",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "12748",
+          "departure": "13:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "14:30",
           "rank": null,
           "delay": null,
           "note": null
@@ -347,6 +410,15 @@
           "note": null
         },
         {
+          "trainNo": "12753",
+          "departure": "14:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "15:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "8029",
           "departure": "15:10",
           "destination": "OVCA",
@@ -363,6 +435,24 @@
           "rank": null,
           "delay": null,
           "note": "Ne saob. sub, ned i 1, 2 i 7 jan, 15, 16 i 17 feb, 10, 12 i 13 apr, 1 i 2 maj , 11 nov 2026"
+        },
+        {
+          "trainNo": "12750",
+          "departure": "15:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "16:30",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "12755",
+          "departure": "15:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "16:10",
+          "rank": null,
+          "delay": null,
+          "note": null
         },
         {
           "trainNo": "2205",
@@ -419,6 +509,15 @@
           "note": null
         },
         {
+          "trainNo": "12754",
+          "departure": "16:58",
+          "destination": "TPS NOVI SAD",
+          "arrival": "17:40",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "8037",
           "departure": "17:10",
           "destination": "OVCA",
@@ -446,6 +545,15 @@
           "note": null
         },
         {
+          "trainNo": "12757",
+          "departure": "17:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "18:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "8041",
           "departure": "18:30",
           "destination": "OVCA",
@@ -468,6 +576,15 @@
           "departure": "18:43",
           "destination": "BEOGRAD CENTAR",
           "arrival": "19:09",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "12756",
+          "departure": "18:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "19:30",
           "rank": null,
           "delay": null,
           "note": null
@@ -527,10 +644,28 @@
           "note": null
         },
         {
+          "trainNo": "12759",
+          "departure": "20:53",
+          "destination": "BEOGRAD CENTAR",
+          "arrival": "21:10",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
           "trainNo": "2207",
           "departure": "21:26",
           "destination": "BEOGRAD CENTAR",
           "arrival": "21:45",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "12758",
+          "departure": "21:48",
+          "destination": "TPS NOVI SAD",
+          "arrival": "22:30",
           "rank": null,
           "delay": null,
           "note": null
