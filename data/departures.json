@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T13:25:44.023Z",
+  "generatedAt": "2026-10-31T18:19:11.946Z",
   "date": "31.10.2026",
   "stations": {
     "BATAJNICA": {
@@ -378,6 +378,15 @@
           "departure": "16:43",
           "destination": "BEOGRAD CENTAR",
           "arrival": "17:09",
+          "rank": null,
+          "delay": null,
+          "note": null
+        },
+        {
+          "trainNo": "2204",
+          "departure": "16:53",
+          "destination": "ŠID",
+          "arrival": "18:35",
           "rank": null,
           "delay": null,
           "note": null
